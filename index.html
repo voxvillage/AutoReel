@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="AutoReel - AI Faceless Video Command Center. Generate scripts, hooks, thumbnails, content calendars & more for TikTok, YouTube Shorts & Reels. AI无脸视频创作中心，脚本/钩子/缩略图/排期一站搞定。">
+<meta name="keywords" content="AI faceless video, TikTok script, YouTube Shorts, auto video, AI视频脚本, 无脸视频, 短视频自动化">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://glistening-treacle-4e73f4.netlify.app">
+<meta property="og:title" content="AutoReel - AI Faceless Video Command Center">
+<meta property="og:description" content="The most powerful AI tool for faceless video creators. Scripts, hooks, thumbnails, trends, calendars — all in one place.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://glistening-treacle-4e73f4.netlify.app">
+<title>AutoReel - AI Faceless Video Command Center | AI无脸视频创作中心</title>
+<style>
+:root{--pri:#0891b2;--prl:#06b6d4;--prbg:#ecfeff;--prbdr:#a5f3fc;--sub:#64748b;--bg:#f0fdfa;--card:#fff;--danger:#dc2626;--accent:#8b5cf6;--success:#059669;--warn:#d97706;--shadow:0 2px 12px rgba(0,0,0,0.06);--shadow-lg:0 8px 24px rgba(0,0,0,0.1);--radius:12px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:#1e293b;line-height:1.6;padding-top:88px;}
+a{color:inherit;text-decoration:none;}
+button{cursor:pointer;font-family:inherit;border:none;outline:none;}
+input,textarea,select{font-family:inherit;}
+
+/* Lang bar */
+.lang-bar{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;justify-content:flex-end;align-items:center;gap:6px;padding:8px 16px;background:rgba(255,255,255,0.95);border-bottom:1px solid #e2e8f0;backdrop-filter:blur(8px);}
+.lang-btn{padding:4px 14px;border-radius:16px;border:1.5px solid var(--pri);background:#fff;color:var(--pri);font-weight:600;font-size:13px;}
+.lang-btn.active{background:var(--pri);color:#fff;}
+
+/* Nav */
+.nav{position:fixed;top:40px;left:0;right:0;z-index:998;display:flex;align-items:center;justify-content:space-between;padding:12px 24px;background:rgba(255,255,255,0.92);backdrop-filter:blur(8px);border-bottom:1px solid #e2e8f0;}
+.nav-brand{font-size:22px;font-weight:800;color:var(--pri);letter-spacing:-0.5px;}
+.nav-brand span{color:var(--accent);}
+.nav-links{display:flex;gap:20px;align-items:center;}
+.nav-links a{font-size:14px;font-weight:500;color:var(--sub);transition:color .2s;}
+.nav-links a:hover{color:var(--pri);}
+.hamburger{display:none;background:none;font-size:24px;color:#1e293b;}
+.mobile-menu{display:none;position:fixed;top:88px;left:0;right:0;background:#fff;border-bottom:1px solid #e2e8f0;z-index:997;flex-direction:column;padding:16px;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{padding:12px 20px;font-size:15px;font-weight:500;color:#1e293b;border-bottom:1px solid #f1f5f9;}
+
+/* Hero */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px 24px 60px;background:linear-gradient(135deg,#ecfeff 0%,#f0fdfa 30%,#ede9fe 100%);position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(8,145,178,0.08),transparent);top:-100px;right:-100px;}
+.hero::after{content:'';position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,0.06),transparent);bottom:-80px;left:-80px;}
+.hero-inner{max-width:720px;position:relative;z-index:1;}
+.hero-badge{display:inline-block;padding:6px 16px;border-radius:20px;background:linear-gradient(135deg,var(--pri),var(--accent));color:#fff;font-size:13px;font-weight:600;margin-bottom:20px;}
+.hero h1{font-size:clamp(28px,5vw,52px);font-weight:800;line-height:1.15;margin-bottom:18px;background:linear-gradient(135deg,#0891b2,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero p{font-size:clamp(15px,2.5vw,18px);color:var(--sub);max-width:560px;margin:0 auto 32px;}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-primary{padding:14px 32px;border-radius:var(--radius);background:linear-gradient(135deg,var(--pri),var(--accent));color:#fff;font-size:16px;font-weight:700;box-shadow:0 4px 16px rgba(8,145,178,0.3);transition:transform .2s,box-shadow .2s;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(8,145,178,0.4);}
+.btn-outline{padding:14px 32px;border-radius:var(--radius);border:2px solid var(--pri);color:var(--pri);font-size:16px;font-weight:600;background:#fff;transition:background .2s;}
+.btn-outline:hover{background:var(--prbg);}
+.hero-stats{display:flex;gap:32px;justify-content:center;margin-top:48px;flex-wrap:wrap;}
+.hero-stat{text-align:center;}
+.hero-stat .num{font-size:28px;font-weight:800;color:var(--pri);}
+.hero-stat .label{font-size:13px;color:var(--sub);}
+
+/* Features grid */
+.features{padding:80px 24px;max-width:1200px;margin:0 auto;min-height:60vh;}
+.section-title{text-align:center;margin-bottom:48px;}
+.section-title h2{font-size:clamp(22px,4vw,36px);font-weight:800;margin-bottom:8px;}
+.section-title p{color:var(--sub);font-size:16px;max-width:500px;margin:0 auto;}
+.feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.feat-card{background:var(--card);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);border:1px solid #f1f5f9;transition:transform .2s,box-shadow .2s;}
+.feat-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+.feat-icon{font-size:28px;margin-bottom:12px;}
+.feat-card h3{font-size:15px;font-weight:700;margin-bottom:6px;}
+.feat-card p{font-size:13px;color:var(--sub);line-height:1.5;}
+
+/* App section */
+.app-section{display:none;max-width:1200px;margin:0 auto;padding:20px 16px 40px;}
+.app-section.active{display:block;}
+.app-upgrade-bar{display:none;background:linear-gradient(135deg,var(--pri),var(--accent));color:#fff;text-align:center;padding:10px 16px;font-size:14px;font-weight:600;position:sticky;top:88px;z-index:99;}
+.app-upgrade-bar a{color:#fef3c7;text-decoration:underline;font-weight:700;cursor:pointer;}
+
+/* Tab bar */
+.tab-bar{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:20px;padding:6px;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow-x:auto;}
+.tab-btn{padding:10px 16px;border-radius:8px;font-size:13px;font-weight:600;color:var(--sub);background:transparent;white-space:nowrap;transition:all .2s;}
+.tab-btn:hover{background:var(--prbg);color:var(--pri);}
+.tab-btn.active{background:linear-gradient(135deg,var(--pri),var(--accent));color:#fff;}
+
+/* Tab content */
+.tab-content{display:none;}
+.tab-content.active{display:block;}
+
+/* Form */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
+.form-group{display:flex;flex-direction:column;gap:6px;}
+.form-group.full{grid-column:1/-1;}
+.form-group label{font-size:13px;font-weight:600;color:#374151;}
+.form-group input,.form-group textarea,.form-group select{padding:10px 14px;border-radius:8px;border:1.5px solid #e2e8f0;font-size:14px;transition:border-color .2s;background:#fff;}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--pri);outline:none;box-shadow:0 0 0 3px rgba(8,145,178,0.1);}
+.form-group textarea{min-height:80px;resize:vertical;}
+.form-group select{cursor:pointer;}
+
+/* Generate btn */
+.gen-bar{display:flex;gap:12px;align-items:center;margin-bottom:20px;flex-wrap:wrap;}
+.btn-gen{padding:12px 28px;border-radius:var(--radius);background:linear-gradient(135deg,var(--pri),var(--accent));color:#fff;font-size:15px;font-weight:700;box-shadow:0 4px 12px rgba(8,145,178,0.25);transition:transform .15s;}
+.btn-gen:hover{transform:translateY(-1px);}
+.btn-gen:disabled{opacity:0.5;cursor:not-allowed;transform:none;}
+.usage-info{font-size:13px;color:var(--sub);display:flex;align-items:center;gap:8px;}
+.usage-bar{width:80px;height:6px;border-radius:3px;background:#e2e8f0;overflow:hidden;}
+.usage-bar-fill{height:100%;background:linear-gradient(90deg,var(--pri),var(--accent));border-radius:3px;transition:width .3s;}
+.plan-tag{padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700;text-transform:uppercase;}
+.plan-free{background:#fef3c7;color:#92400e;}
+.plan-starter{background:#dbeafe;color:#1e40af;}
+.plan-pro{background:#ede9fe;color:#5b21b6;}
+.plan-agency{background:#fce7f3;color:#9d174d;}
+
+/* Result */
+.result-box{background:var(--card);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);border:1px solid #f1f5f9;display:none;position:relative;}
+.result-box.show{display:block;}
+.result-box h4{font-size:16px;font-weight:700;margin-bottom:12px;color:var(--pri);}
+.result-text{font-size:14px;line-height:1.8;white-space:pre-wrap;color:#374151;}
+.result-meta{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap;align-items:center;}
+.result-meta span{font-size:12px;color:var(--sub);}
+.engagement-badge{padding:4px 12px;border-radius:8px;font-size:12px;font-weight:700;}
+.eng-high{background:#d1fae5;color:#065f46;}
+.eng-mid{background:#fef3c7;color:#92400e;}
+.eng-low{background:#fee2e2;color:#991b1b;}
+.result-actions{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap;}
+.btn-sm{padding:8px 16px;border-radius:8px;font-size:12px;font-weight:600;border:1.5px solid #e2e8f0;background:#fff;color:#374151;transition:all .15s;}
+.btn-sm:hover{border-color:var(--pri);color:var(--pri);background:var(--prbg);}
+
+/* History */
+.history-section{margin-top:24px;}
+.history-section h4{font-size:14px;font-weight:700;margin-bottom:10px;color:#374151;}
+.history-list{display:flex;flex-direction:column;gap:8px;max-height:300px;overflow-y:auto;}
+.history-item{padding:10px 14px;border-radius:8px;background:#f8fafc;border:1px solid #f1f5f9;cursor:pointer;transition:background .15s;}
+.history-item:hover{background:var(--prbg);}
+.history-item .hi-title{font-size:13px;font-weight:600;color:#1e293b;}
+.history-item .hi-meta{font-size:11px;color:var(--sub);margin-top:2px;}
+
+/* Calendar view */
+.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:16px;}
+.cal-header{text-align:center;font-size:11px;font-weight:700;color:var(--sub);padding:6px 0;}
+.cal-day{min-height:60px;padding:6px;border-radius:6px;background:#f8fafc;border:1px solid #f1f5f9;font-size:11px;}
+.cal-day .day-num{font-weight:700;color:#64748b;margin-bottom:4px;}
+.cal-day .cal-event{background:linear-gradient(135deg,var(--pri),var(--accent));color:#fff;padding:2px 6px;border-radius:4px;font-size:10px;margin-top:2px;display:block;}
+.cal-day.empty{background:transparent;border:none;}
+
+/* Competitor table */
+.comp-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:16px;font-size:13px;}
+.comp-table th{background:#f1f5f9;padding:10px 12px;text-align:left;font-weight:700;border-bottom:2px solid #e2e8f0;}
+.comp-table td{padding:10px 12px;border-bottom:1px solid #f1f5f9;}
+.comp-table tr:hover td{background:var(--prbg);}
+
+/* Revenue calc */
+.revenue-result{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px;}
+.rev-card{background:linear-gradient(135deg,var(--pri),var(--accent));border-radius:var(--radius);padding:20px;text-align:center;color:#fff;}
+.rev-card .rev-num{font-size:28px;font-weight:800;}
+.rev-card .rev-label{font-size:12px;opacity:0.85;margin-top:4px;}
+
+/* Pricing */
+.pricing{padding:80px 24px;max-width:1100px;margin:0 auto;}
+.price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px;}
+.price-card{background:var(--card);border-radius:var(--radius);padding:28px 20px;box-shadow:var(--shadow);border:2px solid #f1f5f9;text-align:center;position:relative;transition:transform .2s;}
+.price-card:hover{transform:translateY(-4px);}
+.price-card.pop{border-color:var(--pri);box-shadow:var(--shadow-lg);}
+.price-card.pop::before{content:'POPULAR';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--pri),var(--accent));color:#fff;padding:4px 14px;border-radius:12px;font-size:11px;font-weight:700;}
+.price-card h3{font-size:18px;font-weight:800;margin-bottom:4px;}
+.price-amount{font-size:36px;font-weight:800;color:var(--pri);margin:12px 0 4px;}
+.price-amount span{font-size:14px;color:var(--sub);font-weight:400;}
+.price-limit{font-size:13px;color:var(--sub);margin-bottom:16px;}
+.price-features{list-style:none;text-align:left;margin-bottom:20px;}
+.price-features li{font-size:13px;padding:4px 0;color:#374151;}
+.price-features li::before{content:'✓ ';color:var(--success);font-weight:700;}
+.btn-price{width:100%;padding:12px;border-radius:8px;font-size:14px;font-weight:700;transition:all .2s;}
+.btn-price-outline{border:2px solid var(--pri);color:var(--pri);background:#fff;}
+.btn-price-outline:hover{background:var(--prbg);}
+.btn-price-fill{background:linear-gradient(135deg,var(--pri),var(--accent));color:#fff;border:none;}
+
+/* Modal */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center;padding:20px;}
+.modal-overlay.show{display:flex;}
+.modal{background:#fff;border-radius:var(--radius);padding:32px;max-width:480px;width:100%;max-height:85vh;overflow-y:auto;position:relative;}
+.modal h3{font-size:20px;font-weight:800;margin-bottom:16px;}
+.modal-close{position:absolute;top:16px;right:16px;background:none;font-size:20px;color:var(--sub);}
+.paypal-area{min-height:60px;margin-top:12px;}
+.paypal-fallback{margin-top:12px;padding:12px;border-radius:8px;background:#fef3c7;font-size:13px;}
+.paypal-fallback a{color:var(--pri);font-weight:600;}
+
+/* Footer */
+.site-footer{background:#1e293b;color:#94a3b8;padding:40px 24px;text-align:center;margin-top:60px;}
+.site-footer p{font-size:13px;}
+
+/* Responsive */
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .hamburger{display:block;}
+  .feat-grid{grid-template-columns:repeat(2,1fr);}
+  .form-grid{grid-template-columns:1fr;}
+  .price-grid{grid-template-columns:repeat(2,1fr);}
+  .revenue-result{grid-template-columns:1fr;}
+  .hero-stats{gap:20px;}
+  .tab-bar{gap:2px;padding:4px;}
+  .tab-btn{padding:8px 10px;font-size:12px;}
+  .calendar-grid{grid-template-columns:repeat(7,1fr);gap:2px;}
+  .cal-day{min-height:40px;padding:3px;font-size:9px;}
+}
+@media(max-width:480px){
+  .feat-grid{grid-template-columns:1fr;}
+  .price-grid{grid-template-columns:1fr;}
+  .hero-btns{flex-direction:column;align-items:stretch;}
+  .gen-bar{flex-direction:column;align-items:stretch;}
+  .result-actions{flex-direction:column;}
+  .btn-sm{width:100%;text-align:center;}
+}
+
+/* Spinner */
+.spinner{display:inline-block;width:18px;height:18px;border:2px solid #fff;border-top-color:transparent;border-radius:50%;animation:spin .6s linear infinite;vertical-align:middle;margin-right:6px;}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Toast */
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);padding:12px 24px;border-radius:8px;color:#fff;font-size:14px;font-weight:600;z-index:2000;animation:fadeInUp .3s;}
+.toast-ok{background:var(--success);}
+.toast-err{background:var(--danger);}
+@keyframes fadeInUp{from{opacity:0;transform:translate(-50%,20px);}to{opacity:1;transform:translate(-50%,0);}}
+</style>
+</head>
+<body>
+
+<!-- Lang bar -->
+<div class="lang-bar">
+  <button class="lang-btn active" id="btn-zh">中文</button>
+  <button class="lang-btn" id="btn-en">EN</button>
+</div>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-brand">Auto<span>Reel</span></div>
+  <div class="nav-links">
+    <a href="#" id="nav-home">Home</a>
+    <a href="#" id="nav-features">Features</a>
+    <a href="#" id="nav-pricing">Pricing</a>
+    <a href="#" id="nav-app">🎬 Studio</a>
+    <a href="#" id="nav-contact">Contact</a>
+  </div>
+  <button class="hamburger" id="hamburger-btn">☰</button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#" id="m-home">Home</a>
+  <a href="#" id="m-features">Features</a>
+  <a href="#" id="m-pricing">Pricing</a>
+  <a href="#" id="m-app">🎬 Studio</a>
+  <a href="#" id="m-contact">Contact</a>
+</div>
+
+<!-- Hero -->
+<section class="hero" id="hero-section">
+  <div class="hero-inner">
+    <div class="hero-badge">🚀 AI Faceless Video Command Center</div>
+    <h1 data-i18n="heroTitle">Create Viral Faceless Videos on Autopilot</h1>
+    <p data-i18n="heroSub">8 AI-powered tools: scripts, hooks, trends, calendars, thumbnails, competitor analysis, SEO & revenue estimation — all in one platform.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" id="hero-start">🎬 Start Creating — Free</button>
+      <button class="btn-outline" id="hero-see-features">View Features →</button>
+    </div>
+    <div style="display:flex;gap:12px;justify-content:center;margin-top:16px;flex-wrap:wrap;">
+      <span style="background:rgba(8,145,178,0.1);padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600;color:#0891b2;">🆓 Free 3/day</span>
+      <span style="background:rgba(139,92,246,0.1);padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600;color:#8b5cf6;">💳 From $14.9/mo</span>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">8</div><div class="label" data-i18n="statTools">AI Tools</div></div>
+      <div class="hero-stat"><div class="num">10</div><div class="label" data-i18n="statLangs">Languages</div></div>
+      <div class="hero-stat"><div class="num">3</div><div class="label" data-i18n="statCreators">Platforms</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="features" id="features-section">
+  <div class="section-title">
+    <h2 data-i18n="featTitle">8 AI Tools in One Platform</h2>
+    <p data-i18n="featSub">Everything you need to create, optimize & scale faceless video channels</p>
+  </div>
+  <div class="feat-grid">
+    <div class="feat-card"><div class="feat-icon">🎬</div><h3 data-i18n="f1t">Script Studio</h3><p data-i18n="f1d">Full scripts with hooks, scenes, CTAs & engagement scoring</p></div>
+    <div class="feat-card"><div class="feat-icon">🪝</div><h3 data-i18n="f2t">Hook Lab</h3><p data-i18n="f2d">Generate viral opening hooks with A/B variants</p></div>
+    <div class="feat-card"><div class="feat-icon">📊</div><h3 data-i18n="f3t">Trend Radar</h3><p data-i18n="f3d">Discover trending topics & viral content ideas in your niche</p></div>
+    <div class="feat-card"><div class="feat-icon">📅</div><h3 data-i18n="f4t">Content Calendar</h3><p data-i18n="f4d">AI-planned monthly posting schedule optimized for growth</p></div>
+    <div class="feat-card"><div class="feat-icon">🔍</div><h3 data-i18n="f5t">Competitor Spy</h3><p data-i18n="f5d">Analyze competitors & find content gaps they missed</p></div>
+    <div class="feat-card"><div class="feat-icon">🖼️</div><h3 data-i18n="f6t">Thumbnail Prompter</h3><p data-i18n="f6d">Generate thumbnail concepts that get clicks</p></div>
+    <div class="feat-card"><div class="feat-icon">📈</div><h3 data-i18n="f7t">Revenue Estimator</h3><p data-i18n="f7d">Calculate potential earnings by niche & posting frequency</p></div>
+    <div class="feat-card"><div class="feat-icon">🏷️</div><h3 data-i18n="f8t">SEO Optimizer</h3><p data-i18n="f8d">Platform-specific titles, descriptions, hashtags & tags</p></div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="pricing" id="pricing-section">
+  <div class="section-title">
+    <h2 data-i18n="priceTitle">Simple, Transparent Pricing</h2>
+    <p data-i18n="priceSub">Start free. Upgrade when you're ready to scale.</p>
+  </div>
+  <div class="price-grid">
+    <div class="price-card" style="border-color:#059669;">
+      <span style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#059669;color:#fff;padding:4px 14px;border-radius:12px;font-size:11px;font-weight:700;">FREE</span>
+      <h3>Free</h3>
+      <div class="price-amount">$0<span>/mo</span></div>
+      <div class="price-limit" data-i18n="pFree">3 generations / day</div>
+      <ul class="price-features">
+        <li data-i18n="p1a">All 8 AI tools</li>
+        <li data-i18n="p1b">3 generations/day</li>
+        <li data-i18n="p1c">Basic templates</li>
+        <li data-i18n="p1d">TXT & PDF export</li>
+      </ul>
+      <button class="btn-price btn-price-outline" id="free-plan-btn" style="border-color:#059669;color:#059669;" data-i18n="pCurr">Current Plan</button>
+    </div>
+    <div class="price-card pop">
+      <h3>Starter</h3>
+      <div class="price-amount">$14.9<span>/mo</span></div>
+      <div class="price-limit" data-i18n="p2l">30 generations / month</div>
+      <ul class="price-features">
+        <li data-i18n="p1a">All 8 AI tools</li>
+        <li data-i18n="p2a">30 generations/mo</li>
+        <li data-i18n="p2b">A/B hook variants</li>
+        <li data-i18n="p2c">Content calendar</li>
+        <li data-i18n="p2d">Engagement scoring</li>
+      </ul>
+      <button class="btn-price btn-price-fill" data-plan="starter" data-amount="14.9">Get Starter →</button>
+    </div>
+    <div class="price-card">
+      <h3>Pro</h3>
+      <div class="price-amount">$39<span>/mo</span></div>
+      <div class="price-limit" data-i18n="p3l">150 generations / month</div>
+      <ul class="price-features">
+        <li data-i18n="p1a">All 8 AI tools</li>
+        <li data-i18n="p3a">150 generations/mo</li>
+        <li data-i18n="p3b">Competitor analysis</li>
+        <li data-i18n="p3c">Revenue estimator</li>
+        <li data-i18n="p3d">Batch generation</li>
+      </ul>
+      <button class="btn-price btn-price-fill" data-plan="pro" data-amount="39">Get Pro →</button>
+    </div>
+    <div class="price-card">
+      <h3>Agency</h3>
+      <div class="price-amount">$79<span>/mo</span></div>
+      <div class="price-limit" data-i18n="p4l">500 generations / month</div>
+      <ul class="price-features">
+        <li data-i18n="p1a">All 8 AI tools</li>
+        <li data-i18n="p4a">500 generations/mo</li>
+        <li data-i18n="p4b">Full competitor spy</li>
+        <li data-i18n="p4c">White-label export</li>
+        <li data-i18n="p4d">Priority generation</li>
+      </ul>
+      <button class="btn-price btn-price-fill" data-plan="agency" data-amount="79">Get Agency →</button>
+    </div>
+  </div>
+</section>
+
+<!-- App -->
+<div class="app-upgrade-bar" id="app-upgrade-bar">🆓 Free plan: 3 generations/day — <a id="upgrade-link">Upgrade for more →</a></div>
+<div class="app-section" id="app-section">
+  <div class="tab-bar" id="tab-bar">
+    <button class="tab-btn active" data-tab="script">🎬 Script</button>
+    <button class="tab-btn" data-tab="hook">🪝 Hook</button>
+    <button class="tab-btn" data-tab="trend">📊 Trend</button>
+    <button class="tab-btn" data-tab="calendar">📅 Calendar</button>
+    <button class="tab-btn" data-tab="compete">🔍 Compete</button>
+    <button class="tab-btn" data-tab="thumb">🖼️ Thumb</button>
+    <button class="tab-btn" data-tab="revenue">📈 Revenue</button>
+    <button class="tab-btn" data-tab="seo">🏷️ SEO</button>
+  </div>
+
+  <!-- Script Studio -->
+  <div class="tab-content active" id="tab-script">
+    <div class="form-grid">
+      <div class="form-group full"><label data-i18n="lTopic">Topic / Idea</label><input type="text" id="s-topic" placeholder="e.g. 5 morning habits of successful people"></div>
+      <div class="form-group"><label data-i18n="lPlatform">Platform</label><select id="s-platform"><option value="TikTok">TikTok</option><option value="YouTube Shorts">YouTube Shorts</option><option value="Instagram Reels">Instagram Reels</option></select></div>
+      <div class="form-group"><label data-i18n="lStyle">Visual Style</label><select id="s-style"><option value="Cinematic B-roll">Cinematic B-roll</option><option value="Anime / Cartoon">Anime / Cartoon</option><option value="Minecraft / Gaming">Minecraft / Gaming</option><option value="Comic Book">Comic Book</option><option value="Minimalist Text">Minimalist Text</option><option value="Stock Footage">Stock Footage</option><option value="AI Art / Midjourney">AI Art / Midjourney</option><option value="Whiteboard">Whiteboard</option></select></div>
+      <div class="form-group"><label data-i18n="lTemplate">Script Template</label><select id="s-template"><option value="Listicle / Tips">Listicle / Tips</option><option value="Story / Narrative">Story / Narrative</option><option value="Before → After">Before → After</option><option value="How-To / Tutorial">How-To / Tutorial</option><option value="Controversial Take">Controversial Take</option><option value="Product Review">Product Review</option></select></div>
+      <div class="form-group"><label data-i18n="lAudience">Target Audience</label><select id="s-audience"><option value="General">General</option><option value="Gen Z (18-24)">Gen Z (18-24)</option><option value="Millennials (25-40)">Millennials (25-40)</option><option value="Professionals">Professionals</option><option value="Parents">Parents</option><option value="Students">Students</option></select></div>
+      <div class="form-group"><label data-i18n="lLang">Language</label><select id="s-lang"><option value="English">English</option><option value="Spanish">Spanish</option><option value="French">French</option><option value="German">German</option><option value="Portuguese">Portuguese</option><option value="Japanese">Japanese</option><option value="Korean">Korean</option><option value="Chinese">Chinese</option><option value="Arabic">Arabic</option><option value="Hindi">Hindi</option></select></div>
+      <div class="form-group"><label data-i18n="lDuration">Duration</label><select id="s-duration"><option value="15-30s">15-30s</option><option value="30-60s" selected>30-60s</option><option value="60-90s">60-90s</option></select></div>
+    </div>
+    <div class="gen-bar">
+      <button class="btn-gen" id="gen-script">🔥 Generate Script</button>
+      <div class="usage-info" id="usage-info"></div>
+    </div>
+    <div class="result-box" id="result-script">
+      <h4>🎬 <span data-i18n="rScript">Script Result</span></h4>
+      <div class="result-text" id="text-script"></div>
+      <div class="result-meta" id="meta-script"></div>
+      <div class="result-actions" id="actions-script"></div>
+    </div>
+    <div class="history-section" id="hist-script">
+      <h4 data-i18n="histTitle">Recent History</h4>
+      <div class="history-list" id="hist-list-script"></div>
+    </div>
+  </div>
+
+  <!-- Hook Lab -->
+  <div class="tab-content" id="tab-hook">
+    <div class="form-grid">
+      <div class="form-group full"><label data-i18n="lHookTopic">Video Topic</label><input type="text" id="h-topic" placeholder="e.g. Why you should start journaling"></div>
+      <div class="form-group"><label data-i18n="lPlatform">Platform</label><select id="h-platform"><option value="TikTok">TikTok</option><option value="YouTube Shorts">YouTube Shorts</option><option value="Instagram Reels">Instagram Reels</option></select></div>
+      <div class="form-group"><label data-i18n="lHookStyle">Hook Style</label><select id="h-style"><option value="Shocking Stat">Shocking Stat</option><option value="Controversial Question">Controversial Question</option><option value="Story Opener">Story Opener</option><option value="Challenge / Dare">Challenge / Dare</option><option value="Counter-Intuitive">Counter-Intuitive</option><option value="FOMO / Urgency">FOMO / Urgency</option></select></div>
+      <div class="form-group"><label data-i18n="lAudience">Audience</label><select id="h-audience"><option value="General">General</option><option value="Gen Z">Gen Z</option><option value="Millennials">Millennials</option><option value="Professionals">Professionals</option></select></div>
+      <div class="form-group"><label data-i18n="lAB">A/B Variants</label><select id="h-ab"><option value="2">2 variants</option><option value="3">3 variants</option><option value="4">4 variants</option></select></div>
+    </div>
+    <div class="gen-bar">
+      <button class="btn-gen" id="gen-hook">🪝 Generate Hooks</button>
+      <div class="usage-info" id="usage-hook"></div>
+    </div>
+    <div class="result-box" id="result-hook">
+      <h4>🪝 <span data-i18n="rHook">Hook Variants</span></h4>
+      <div class="result-text" id="text-hook"></div>
+      <div class="result-actions" id="actions-hook"></div>
+    </div>
+    <div class="history-section" id="hist-hook"><h4 data-i18n="histTitle">Recent History</h4><div class="history-list" id="hist-list-hook"></div></div>
+  </div>
+
+  <!-- Trend Radar -->
+  <div class="tab-content" id="tab-trend">
+    <div class="form-grid">
+      <div class="form-group full"><label data-i18n="lNiche">Your Niche</label><input type="text" id="t-niche" placeholder="e.g. fitness, finance, gaming, cooking"></div>
+      <div class="form-group"><label data-i18n="lPlatform">Platform</label><select id="t-platform"><option value="TikTok">TikTok</option><option value="YouTube Shorts">YouTube Shorts</option><option value="Instagram Reels">Instagram Reels</option><option value="All Platforms">All Platforms</option></select></div>
+      <div class="form-group"><label data-i18n="lRegion">Region</label><select id="t-region"><option value="US">US</option><option value="UK">UK</option><option value="Global">Global</option><option value="Southeast Asia">Southeast Asia</option><option value="Latin America">Latin America</option></select></div>
+    </div>
+    <div class="gen-bar">
+      <button class="btn-gen" id="gen-trend">📊 Scan Trends</button>
+      <div class="usage-info" id="usage-trend"></div>
+    </div>
+    <div class="result-box" id="result-trend">
+      <h4>📊 <span data-i18n="rTrend">Trend Report</span></h4>
+      <div class="result-text" id="text-trend"></div>
+      <div class="result-actions" id="actions-trend"></div>
+    </div>
+    <div class="history-section" id="hist-trend"><h4 data-i18n="histTitle">Recent History</h4><div class="history-list" id="hist-list-trend"></div></div>
+  </div>
+
+  <!-- Content Calendar -->
+  <div class="tab-content" id="tab-calendar">
+    <div class="form-grid">
+      <div class="form-group"><label data-i18n="lNiche2">Niche</label><input type="text" id="c-niche" placeholder="e.g. personal finance"></div>
+      <div class="form-group"><label data-i18n="lFreq">Posting Frequency</label><select id="c-freq"><option value="3x/week">3x/week</option><option value="5x/week">5x/week</option><option value="Daily">Daily</option><option value="2x/day">2x/day</option></select></div>
+      <div class="form-group"><label data-i18n="lPlatform">Platform</label><select id="c-platform"><option value="TikTok">TikTok</option><option value="YouTube Shorts">YouTube Shorts</option><option value="Instagram Reels">Instagram Reels</option><option value="Multi-platform">Multi-platform</option></select></div>
+      <div class="form-group"><label data-i18n="lLang">Language</label><select id="c-lang"><option value="English">English</option><option value="Spanish">Spanish</option><option value="Chinese">Chinese</option><option value="French">French</option><option value="Portuguese">Portuguese</option></select></div>
+    </div>
+    <div class="gen-bar">
+      <button class="btn-gen" id="gen-calendar">📅 Generate Calendar</button>
+      <div class="usage-info" id="usage-calendar"></div>
+    </div>
+    <div class="result-box" id="result-calendar">
+      <h4>📅 <span data-i18n="rCal">Content Calendar</span></h4>
+      <div class="result-text" id="text-calendar"></div>
+      <div class="result-actions" id="actions-calendar"></div>
+    </div>
+    <div class="history-section" id="hist-calendar"><h4 data-i18n="histTitle">Recent History</h4><div class="history-list" id="hist-list-calendar"></div></div>
+  </div>
+
+  <!-- Competitor Spy -->
+  <div class="tab-content" id="tab-compete">
+    <div class="form-grid">
+      <div class="form-group full"><label data-i18n="lCompNiche">Your Niche / Competitors</label><input type="text" id="cp-niche" placeholder="e.g. fitness shorts, cooking tips, crypto education"></div>
+      <div class="form-group"><label data-i18n="lPlatform">Platform</label><select id="cp-platform"><option value="TikTok">TikTok</option><option value="YouTube Shorts">YouTube Shorts</option><option value="Instagram Reels">Instagram Reels</option></select></div>
+      <div class="form-group"><label data-i18n="lCompFocus">Analysis Focus</label><select id="cp-focus"><option value="Content Gaps">Content Gaps</option><option value="Top Performing Formats">Top Performing Formats</option><option value="Engagement Tactics">Engagement Tactics</option><option value="Full Analysis">Full Analysis</option></select></div>
+    </div>
+    <div class="gen-bar">
+      <button class="btn-gen" id="gen-compete">🔍 Analyze Competitors</button>
+      <div class="usage-info" id="usage-compete"></div>
+    </div>
+    <div class="result-box" id="result-compete">
+      <h4>🔍 <span data-i18n="rComp">Competitor Analysis</span></h4>
+      <div class="result-text" id="text-compete"></div>
+      <div class="result-actions" id="actions-compete"></div>
+    </div>
+    <div class="history-section" id="hist-compete"><h4 data-i18n="histTitle">Recent History</h4><div class="history-list" id="hist-list-compete"></div></div>
+  </div>
+
+  <!-- Thumbnail Prompter -->
+  <div class="tab-content" id="tab-thumb">
+    <div class="form-grid">
+      <div class="form-group full"><label data-i18n="lThumbTopic">Video Title / Topic</label><input type="text" id="th-topic" placeholder="e.g. I Tried Waking Up at 5AM for 30 Days"></div>
+      <div class="form-group"><label data-i18n="lPlatform">Platform</label><select id="th-platform"><option value="YouTube">YouTube</option><option value="TikTok">TikTok</option><option value="Instagram">Instagram</option></select></div>
+      <div class="form-group"><label data-i18n="lThumbStyle">Thumbnail Style</label><select id="th-style"><option value="Bold Text + Face">Bold Text + Face</option><option value="Before/After Split">Before/After Split</option><option value="Minimalist">Minimalist</option><option value="Clickbait Extreme">Clickbait Extreme</option><option value="Infographic Style">Infographic Style</option></select></div>
+      <div class="form-group"><label data-i18n="lVariants">Variants</label><select id="th-variants"><option value="3">3 concepts</option><option value="5">5 concepts</option></select></div>
+    </div>
+    <div class="gen-bar">
+      <button class="btn-gen" id="gen-thumb">🖼️ Generate Thumbnails</button>
+      <div class="usage-info" id="usage-thumb"></div>
+    </div>
+    <div class="result-box" id="result-thumb">
+      <h4>🖼️ <span data-i18n="rThumb">Thumbnail Concepts</span></h4>
+      <div class="result-text" id="text-thumb"></div>
+      <div class="result-actions" id="actions-thumb"></div>
+    </div>
+    <div class="history-section" id="hist-thumb"><h4 data-i18n="histTitle">Recent History</h4><div class="history-list" id="hist-list-thumb"></div></div>
+  </div>
+
+  <!-- Revenue Estimator -->
+  <div class="tab-content" id="tab-revenue">
+    <div class="form-grid">
+      <div class="form-group"><label data-i18n="lRevNiche">Niche</label><select id="rev-niche"><option value="Finance / Make Money">Finance / Make Money</option><option value="Health / Fitness">Health / Fitness</option><option value="Tech / Gaming">Tech / Gaming</option><option value="Education">Education</option><option value="Entertainment / Comedy">Entertainment / Comedy</option><option value="Beauty / Fashion">Beauty / Fashion</option><option value="Food / Cooking">Food / Cooking</option><option value="Travel">Travel</option><option value="Motivation">Motivation</option></select></div>
+      <div class="form-group"><label data-i18n="lRevFreq">Posting Frequency</label><select id="rev-freq"><option value="1x/day">1x/day</option><option value="2x/day">2x/day</option><option value="3x/week">3x/week</option><option value="5x/week">5x/week</option></select></div>
+      <div class="form-group"><label data-i18n="lRevPlatform">Primary Platform</label><select id="rev-platform"><option value="YouTube Shorts">YouTube Shorts</option><option value="TikTok">TikTok</option><option value="Instagram Reels">Instagram Reels</option><option value="Multi-platform">Multi-platform</option></select></div>
+      <div class="form-group"><label data-i18n="lRevMonths">Projection Period</label><select id="rev-months"><option value="3">3 months</option><option value="6" selected>6 months</option><option value="12">12 months</option></select></div>
+    </div>
+    <div class="gen-bar">
+      <button class="btn-gen" id="gen-revenue">📈 Calculate Revenue</button>
+      <div class="usage-info" id="usage-revenue"></div>
+    </div>
+    <div class="result-box" id="result-revenue">
+      <h4>📈 <span data-i18n="rRev">Revenue Projection</span></h4>
+      <div class="revenue-result" id="rev-cards"></div>
+      <div class="result-text" id="text-revenue" style="margin-top:16px;"></div>
+      <div class="result-actions" id="actions-revenue"></div>
+    </div>
+    <div class="history-section" id="hist-revenue"><h4 data-i18n="histTitle">Recent History</h4><div class="history-list" id="hist-list-revenue"></div></div>
+  </div>
+
+  <!-- SEO Optimizer -->
+  <div class="tab-content" id="tab-seo">
+    <div class="form-grid">
+      <div class="form-group full"><label data-i18n="lSeoTopic">Video Topic / Description</label><input type="text" id="se-topic" placeholder="e.g. How to save money on groceries"></div>
+      <div class="form-group"><label data-i18n="lPlatform">Platform</label><select id="se-platform"><option value="YouTube">YouTube</option><option value="TikTok">TikTok</option><option value="Instagram">Instagram</option></select></div>
+      <div class="form-group"><label data-i18n="lSeoFocus">SEO Focus</label><select id="se-focus"><option value="Full Package">Full Package (Title + Desc + Tags)</option><option value="Title Only">Title Only</option><option value="Tags Only">Tags Only</option><option value="Hashtags Only">Hashtags Only</option></select></div>
+    </div>
+    <div class="gen-bar">
+      <button class="btn-gen" id="gen-seo">🏷️ Optimize SEO</button>
+      <div class="usage-info" id="usage-seo"></div>
+    </div>
+    <div class="result-box" id="result-seo">
+      <h4>🏷️ <span data-i18n="rSeo">SEO Optimization</span></h4>
+      <div class="result-text" id="text-seo"></div>
+      <div class="result-actions" id="actions-seo"></div>
+    </div>
+    <div class="history-section" id="hist-seo"><h4 data-i18n="histTitle">Recent History</h4><div class="history-list" id="hist-list-seo"></div></div>
+  </div>
+</div>
+
+<!-- Payment Modal -->
+<div class="modal-overlay" id="pay-modal">
+  <div class="modal">
+    <button class="modal-close" id="pay-close">✕</button>
+    <h3 data-i18n="payTitle">Complete Payment</h3>
+    <p id="pay-plan" style="font-size:14px;color:var(--sub);margin-bottom:8px;"></p>
+    <p id="pay-price" style="font-size:24px;font-weight:800;color:var(--pri);margin-bottom:16px;"></p>
+    <div class="paypal-area" id="paypal-area"></div>
+    <div class="paypal-fallback" id="paypal-fallback" style="display:none;"></div>
+    <p style="font-size:12px;color:var(--sub);margin-top:12px;" data-i18n="payNote">After payment, quota will be activated automatically.</p>
+  </div>
+</div>
+
+<!-- Disclaimer Modal -->
+<div class="modal-overlay" id="disc-modal">
+  <div class="modal">
+    <button class="modal-close" id="disc-close">✕</button>
+    <h3 data-i18n="discTitle">Disclaimer</h3>
+    <div style="font-size:13px;line-height:1.8;color:#374151;">
+      <p><strong>1.</strong> <span data-i18n="disc1">AI-generated content is for reference only. Please review before publishing.</span></p>
+      <p><strong>2.</strong> <span data-i18n="disc2">Content is generated by DeepSeek AI and may contain inaccuracies.</span></p>
+      <p><strong>3.</strong> <span data-i18n="disc3">Users are responsible for ensuring content complies with platform policies.</span></p>
+      <p><strong>4.</strong> <span data-i18n="disc4">Digital service — no refunds after quota usage.</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <p>© 2026 AutoReel. AI Faceless Video Command Center. <a href="mailto:qiuzhixu@icloud.com" style="color:var(--prl);">qiuzhixu@icloud.com</a></p>
+</footer>
+
+<!-- jsPDF CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+(function(){
+"use strict";
+
+/* ===== i18n ===== */
+var I18N={
+zh:{
+heroTitle:"全自动创建病毒式无脸视频",heroSub:"8大AI工具：脚本、钩子、趋势、排期、缩略图、竞品分析、SEO优化、收益预估——一个平台全搞定。",statTools:"AI工具",statLangs:"语言",statCreators:"平台",featTitle:"一个平台，8大AI工具",featSub:"创建、优化、规模化无脸视频频道所需的一切",f1t:"脚本工坊",f1d:"完整脚本含钩子、场景、CTA和互动评分",f2t:"钩子实验室",f2d:"生成病毒式开头钩子，支持A/B变体",f3t:"趋势雷达",f3d:"发现你的领域中的热门话题和病毒内容创意",f4t:"内容日历",f4d:"AI规划月度发布排期，优化增长",f5t:"竞品侦察",f5d:"分析竞品，发现他们遗漏的内容空白",f6t:"缩略图提示器",f6d:"生成高点击率缩略图概念",f7t:"收益预估器",f7d:"按领域和发布频率计算潜在收益",f8t:"SEO优化器",f8d:"平台专属标题、描述、标签和话题标签",priceTitle:"简单透明的定价",priceSub:"免费开始，准备好了再升级",pFree:"3次生成 / 天",p1a:"全部8个AI工具",p1b:"3次/天",p1c:"基础模板",p1d:"TXT和PDF导出",p2l:"30次生成 / 月",p2a:"30次/月",p2b:"A/B钩子变体",p2c:"内容日历",p2d:"互动评分",p3l:"150次生成 / 月",p3a:"150次/月",p3b:"竞品分析",p3c:"收益预估器",p3d:"批量生成",p4l:"500次生成 / 月",p4a:"500次/月",p4b:"完整竞品侦察",p4c:"白标导出",p4d:"优先生成",pCurr:"当前套餐",lTopic:"主题 / 创意",lPlatform:"平台",lStyle:"视觉风格",lTemplate:"脚本模板",lAudience:"目标受众",lLang:"语言",lDuration:"时长",lHookTopic:"视频主题",lHookStyle:"钩子风格",lAB:"A/B变体数",lNiche:"你的领域",lRegion:"地区",lNiche2:"领域",lFreq:"发布频率",lCompNiche:"你的领域 / 竞品关键词",lCompFocus:"分析重点",lThumbTopic:"视频标题 / 主题",lThumbStyle:"缩略图风格",lVariants:"变体数",lRevNiche:"领域",lRevFreq:"发布频率",lRevPlatform:"主平台",lRevMonths:"预测周期",lSeoTopic:"视频主题 / 描述",lSeoFocus:"SEO重点",rScript:"脚本结果",rHook:"钩子变体",rTrend:"趋势报告",rCal:"内容日历",rComp:"竞品分析",rThumb:"缩略图概念",rRev:"收益预测",rSeo:"SEO优化",histTitle:"最近记录",payTitle:"完成支付",payNote:"支付成功后额度将自动激活。",discTitle:"免责声明",disc1:"AI生成内容仅供参考，发布前请审核。",disc2:"内容由DeepSeek AI生成，可能存在不准确。",disc3:"用户需自行确保内容符合各平台政策。",disc4:"数字服务——额度使用后不支持退款。",cooldownMsg:"⏳ 请稍等几秒再生成下一个内容。",limitMsg:"今日免费额度已用完，升级套餐解锁更多。",wordsLabel:"字数",engScore:"互动评分",copyBtn:"复制",pdfBtn:"PDF",txtBtn:"TXT",regenBtn:"重新生成",noHist:"暂无记录"
+},
+en:{
+heroTitle:"Create Viral Faceless Videos on Autopilot",heroSub:"8 AI-powered tools: scripts, hooks, trends, calendars, thumbnails, competitor analysis, SEO & revenue estimation — all in one platform.",statTools:"AI Tools",statLangs:"Languages",statCreators:"Platforms",featTitle:"8 AI Tools in One Platform",featSub:"Everything you need to create, optimize & scale faceless video channels",f1t:"Script Studio",f1d:"Full scripts with hooks, scenes, CTAs & engagement scoring",f2t:"Hook Lab",f2d:"Generate viral opening hooks with A/B variants",f3t:"Trend Radar",f3d:"Discover trending topics & viral content ideas in your niche",f4t:"Content Calendar",f4d:"AI-planned monthly posting schedule optimized for growth",f5t:"Competitor Spy",f5d:"Analyze competitors & find content gaps they missed",f6t:"Thumbnail Prompter",f6d:"Generate thumbnail concepts that get clicks",f7t:"Revenue Estimator",f7d:"Calculate potential earnings by niche & posting frequency",f8t:"SEO Optimizer",f8d:"Platform-specific titles, descriptions, hashtags & tags",priceTitle:"Simple, Transparent Pricing",priceSub:"Start free. Upgrade when you're ready to scale.",pFree:"3 generations / day",p1a:"All 8 AI tools",p1b:"3 generations/day",p1c:"Basic templates",p1d:"TXT & PDF export",p2l:"30 generations / month",p2a:"30 generations/mo",p2b:"A/B hook variants",p2c:"Content calendar",p2d:"Engagement scoring",p3l:"150 generations / month",p3a:"150 generations/mo",p3b:"Competitor analysis",p3c:"Revenue estimator",p3d:"Batch generation",p4l:"500 generations / month",p4a:"500 generations/mo",p4b:"Full competitor spy",p4c:"White-label export",p4d:"Priority generation",pCurr:"Current Plan",lTopic:"Topic / Idea",lPlatform:"Platform",lStyle:"Visual Style",lTemplate:"Script Template",lAudience:"Target Audience",lLang:"Language",lDuration:"Duration",lHookTopic:"Video Topic",lHookStyle:"Hook Style",lAB:"A/B Variants",lNiche:"Your Niche",lRegion:"Region",lNiche2:"Niche",lFreq:"Posting Frequency",lCompNiche:"Your Niche / Competitor Keywords",lCompFocus:"Analysis Focus",lThumbTopic:"Video Title / Topic",lThumbStyle:"Thumbnail Style",lVariants:"Variants",lRevNiche:"Niche",lRevFreq:"Posting Frequency",lRevPlatform:"Primary Platform",lRevMonths:"Projection Period",lSeoTopic:"Video Topic / Description",lSeoFocus:"SEO Focus",rScript:"Script Result",rHook:"Hook Variants",rTrend:"Trend Report",rCal:"Content Calendar",rComp:"Competitor Analysis",rThumb:"Thumbnail Concepts",rRev:"Revenue Projection",rSeo:"SEO Optimization",histTitle:"Recent History",payTitle:"Complete Payment",payNote:"After payment, quota will be activated automatically.",discTitle:"Disclaimer",disc1:"AI-generated content is for reference only. Please review before publishing.",disc2:"Content is generated by DeepSeek AI and may contain inaccuracies.",disc3:"Users are responsible for ensuring content complies with platform policies.",disc4:"Digital service — no refunds after quota usage.",cooldownMsg:"⏳ Please wait a few seconds before generating again.",limitMsg:"Daily free limit reached. Upgrade to unlock more.",wordsLabel:"words",engScore:"Engagement",copyBtn:"Copy",pdfBtn:"PDF",txtBtn:"TXT",regenBtn:"Regenerate",noHist:"No history yet"
+}
+};
+
+var curLang="zh";
+function _(k){return I18N[curLang][k]||k;}
+function applyLang(){
+  curLang=this.lang||curLang;
+  document.documentElement.lang=curLang==="zh"?"zh-CN":"en";
+  document.querySelectorAll("[data-i18n]").forEach(function(el){
+    var k=el.getAttribute("data-i18n");
+    if(I18N[curLang][k]) el.textContent=I18N[curLang][k];
+  });
+  document.getElementById("btn-zh").classList.toggle("active",curLang==="zh");
+  document.getElementById("btn-en").classList.toggle("active",curLang==="en");
+  render();
+}
+
+/* ===== State ===== */
+var currentTab="script";
+var usageCount=0;
+var planLevel="free";
+var planLimits={free:3,starter:30,pro:150,agency:500};
+var lastGenTime=0;
+var MIN_INTERVAL=8000;
+var histories={script:[],hook:[],trend:[],calendar:[],compete:[],thumb:[],revenue:[],seo:[]};
+var payPendingPlan="";
+var payPendingAmount=0;
+
+/* ===== Fingerprint & Anti-abuse ===== */
+var fingerprint="";
+function calcFingerprint(){
+  var c=document.createElement("canvas");
+  var ctx=c.getContext("2d");
+  ctx.textBaseline="top";ctx.font="14px Arial";ctx.fillText("AutoReel_fp",2,2);
+  fingerprint=c.toDataURL().slice(-32).replace(/[^a-z0-9]/gi,"");
+}
+function hashVal(s){var h=0;for(var i=0;i<s.length;i++){h=((h<<5)-h)+s.charCodeAt(i);h|=0;}return h;}
+
+function storeUsage(count){
+  var data=fingerprint+":"+count;
+  var sig=hashVal(data);
+  var payload=data+"|"+sig;
+  try{localStorage.setItem("ar_usage",payload);}catch(e){}
+  try{sessionStorage.setItem("ar_usage",payload);}catch(e){}
+  try{document.cookie="ar_usage="+payload+";path=/;max-age=31536000;SameSite=Lax";}catch(e){}
+}
+function loadUsage(){
+  var sources=[];
+  try{var a=localStorage.getItem("ar_usage");if(a)sources.push(a);}catch(e){}
+  try{var b=sessionStorage.getItem("ar_usage");if(b)sources.push(b);}catch(e){}
+  try{var m=document.cookie.match(/ar_usage=([^;]+)/);if(m)sources.push(m[1]);}catch(e){}
+  var maxCount=0;
+  sources.forEach(function(s){
+    var parts=s.split("|");
+    var data=parts[0];var sig=parts[1]||"0";
+    if(hashVal(data).toString()===sig){
+      var fp=data.split(":");
+      if(fp[0]===fingerprint){
+        var c=parseInt(fp[1])||0;
+        if(c>maxCount)maxCount=c;
+      }
+    }
+  });
+  return maxCount;
+}
+function checkLimit(){
+  if(planLevel!=="free")return true;
+  var today=new Date().toISOString().slice(0,10);
+  var saved=loadUsage();
+  var savedDate="";
+  try{savedDate=localStorage.getItem("ar_date")||"";}catch(e){}
+  if(savedDate!==today){usageCount=0;try{localStorage.setItem("ar_date",today);sessionStorage.setItem("ar_date",today);}catch(e){}}
+  else{usageCount=saved;}
+  return usageCount<planLimits.free;
+}
+function incrementUsage(){
+  usageCount++;
+  storeUsage(usageCount);
+}
+
+/* ===== PayPal ===== */
+var PAYPAL_CLIENT_ID="AQG8edm-AB1YQ-fHSOgk5UfB4DyIbAubxFkYdarkwJ78S5Q-kN4brv2sz3LfYJpRPwCAfFAlpJru82Ly";
+var PAYPAL_EMAIL="qiuzhixu@icloud.com";
+
+function loadPayPalSDK(){
+  var s=document.createElement("script");
+  s.src="https://www.paypal.com/sdk/js?client-id="+PAYPAL_CLIENT_ID+"&currency=USD";
+  s.onload=function(){renderPayPalButtons();};
+  s.onerror=function(){
+    document.getElementById("paypal-fallback").style.display="block";
+    document.getElementById("paypal-fallback").innerHTML='<p>PayPal button failed to load. <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business='+encodeURIComponent(PAYPAL_EMAIL)+'&currency_code=USD&amount='+payPendingAmount+'&item_name='+encodeURIComponent("AutoReel "+payPendingPlan)+'">Pay via PayPal →</a></p>';
+  };
+  document.head.appendChild(s);
+}
+function renderPayPalButtons(){
+  if(typeof paypal==="undefined")return;
+  var area=document.getElementById("paypal-area");
+  area.innerHTML="";
+  paypal.Buttons({
+    createOrder:function(data,actions){
+      return actions.order.create({purchase_units:[{amount:{value:payPendingAmount.toString()},description:"AutoReel "+payPendingPlan+" Plan"}]});
+    },
+    onApprove:function(data,actions){
+      return actions.order.capture().then(function(details){
+        handlePaymentSuccess(payPendingPlan);
+      });
+    },
+    onError:function(err){
+      showToast("Payment failed. Please try again.","err");
+    }
+  }).render(area);
+}
+function handlePaymentSuccess(plan){
+  planLevel=plan;
+  usageCount=0;
+  storeUsage(0);
+  try{localStorage.setItem("ar_plan",plan);sessionStorage.setItem("ar_plan",plan);}catch(e){}
+  closeModal("pay-modal");
+  showToast("Payment successful! Quota activated.","ok");
+  setTimeout(function(){showSection("app");render();},1000);
+}
+function openPayModal(plan,amount){
+  payPendingPlan=plan;payPendingAmount=amount;
+  document.getElementById("pay-plan").textContent=plan.charAt(0).toUpperCase()+plan.slice(1)+" Plan";
+  document.getElementById("pay-price").textContent="$"+amount+"/mo";
+  document.getElementById("paypal-area").innerHTML='<p style="color:var(--sub);font-size:14px;">Loading payment options...</p>';
+  document.getElementById("paypal-fallback").style.display="none";
+  openModal("pay-modal");
+  loadPayPalSDK();
+}
+
+/* ===== DeepSeek API ===== */
+var API_URL="https://api.deepseek.com/chat/completions";
+var API_KEY="sk-e990ec67a5584ee0b298994858e281c7";
+
+function buildPrompt(tab){
+  var p="";
+  if(tab==="script"){
+    var topic=document.getElementById("s-topic").value.trim();
+    var plat=document.getElementById("s-platform").value;
+    var style=document.getElementById("s-style").value;
+    var tmpl=document.getElementById("s-template").value;
+    var aud=document.getElementById("s-audience").value;
+    var lang=document.getElementById("s-lang").value;
+    var dur=document.getElementById("s-duration").value;
+    if(!topic)return null;
+    p="You are an expert short-form video scriptwriter. Write a complete "+plat+" faceless video script about: \""+topic+"\"\n\n";
+    p+="Requirements:\n- Template: "+tmpl+"\n- Visual style: "+style+"\n- Target audience: "+aud+"\n- Language: "+lang+"\n- Duration: "+dur+"\n\n";
+    p+="Output format:\n## HOOK (first 3 seconds - must stop the scroll)\n## SCRIPT (scene-by-scene with visual directions in brackets)\n## CTA (call to action in last 3 seconds)\n## ENGAGEMENT SCORE (rate 1-10 how viral this script could be, with brief reason)\n\nMake it punchy, conversational, and scroll-stopping. Use short sentences.";
+  }
+  else if(tab==="hook"){
+    var topic=document.getElementById("h-topic").value.trim();
+    var plat=document.getElementById("h-platform").value;
+    var hstyle=document.getElementById("h-style").value;
+    var aud=document.getElementById("h-audience").value;
+    var ab=parseInt(document.getElementById("h-ab").value);
+    if(!topic)return null;
+    p="You are a viral hook specialist for "+plat+" short videos. Generate "+ab+" different opening hooks for this topic: \""+topic+"\"\n\n";
+    p+="Hook style: "+hstyle+"\nTarget audience: "+aud+"\n\n";
+    p+="For each hook:\n- Write the exact opening line (under 8 words)\n- Explain WHY it works psychologically\n- Rate viral potential (1-10)\n\nFormat as:\n**Hook A:** [opening line]\nWhy: [explanation]\nViral Score: X/10\n\n**Hook B:** ...etc";
+  }
+  else if(tab==="trend"){
+    var niche=document.getElementById("t-niche").value.trim();
+    var plat=document.getElementById("t-platform").value;
+    var reg=document.getElementById("t-region").value;
+    if(!niche)return null;
+    p="You are a social media trend analyst. Analyze current trends in the \""+niche+"\" niche on "+plat+" ("+reg+" region).\n\n";
+    p+="Provide:\n1. **TOP 5 TRENDING TOPICS** - What's going viral right now\n2. **5 UNDERSATURATED IDEAS** - Topics with high interest but low competition\n3. **5 CONTENT GAPS** - Things audiences want but few creators cover\n4. **VIRAL FORMAT TIPS** - What video formats are performing best\n5. **HASHTAG RECOMMENDATIONS** - 10 trending hashtags to use\n\nBe specific with examples and data-backed insights where possible.";
+  }
+  else if(tab==="calendar"){
+    var niche=document.getElementById("c-niche").value.trim();
+    var freq=document.getElementById("c-freq").value;
+    var plat=document.getElementById("c-platform").value;
+    var lang=document.getElementById("c-lang").value;
+    if(!niche)return null;
+    p="You are a content strategy expert. Create a 4-week content calendar for a "+plat+" faceless video channel in the \""+niche+"\" niche.\n\n";
+    p+="Posting frequency: "+freq+"\nLanguage: "+lang+"\n\n";
+    p+="For each post, provide:\n- Day (e.g., Week 1 Monday)\n- Video Topic/Title\n- Content Type (listicle/story/how-to/etc)\n- Suggested Hook (opening line)\n- Key Hashtags (3-5)\n\nAlternate between different content types for variety. Include at least one 'potentially viral' post per week.";
+  }
+  else if(tab==="compete"){
+    var niche=document.getElementById("cp-niche").value.trim();
+    var plat=document.getElementById("cp-platform").value;
+    var focus=document.getElementById("cp-focus").value;
+    if(!niche)return null;
+    p="You are a competitive intelligence analyst for short-form video. Analyze the \""+niche+"\" niche on "+plat+".\n\n";
+    p+="Focus area: "+focus+"\n\n";
+    p+="Provide:\n1. **TOP COMPETITORS** - 5 major players and what they do well\n2. **THEIR WEAKNESSES** - What they're missing or doing poorly\n3. **CONTENT GAPS** - 10 specific video ideas they haven't covered\n4. **DIFFERENTIATION STRATEGIES** - 5 ways to stand out\n5. **FORMAT OPPORTUNITIES** - Underused video formats in this niche\n6. **RECOMMENDED ACTION PLAN** - 3 immediate steps to outperform them";
+  }
+  else if(tab==="thumb"){
+    var topic=document.getElementById("th-topic").value.trim();
+    var plat=document.getElementById("th-platform").value;
+    var thstyle=document.getElementById("th-style").value;
+    var variants=parseInt(document.getElementById("th-variants").value);
+    if(!topic)return null;
+    p="You are a thumbnail design expert for "+plat+". Generate "+variants+" thumbnail concepts for this video: \""+topic+"\"\n\n";
+    p+="Thumbnail style: "+thstyle+"\n\n";
+    p+="For each concept, describe:\n1. **Visual Layout** - Position of elements, background, colors\n2. **Text Overlay** - Bold text to include (max 5 words)\n3. **Emotional Hook** - What feeling it evokes\n4. **Click-through Prediction** - Rate 1-10\n5. **AI Image Prompt** - A detailed prompt you could use in Midjourney/DALL-E to generate this thumbnail\n\nMake descriptions vivid and actionable.";
+  }
+  else if(tab==="revenue"){
+    var niche=document.getElementById("rev-niche").value;
+    var freq=document.getElementById("rev-freq").value;
+    var plat=document.getElementById("rev-platform").value;
+    var months=parseInt(document.getElementById("rev-months").value);
+    p="You are a social media monetization expert. Estimate revenue potential for a faceless video channel.\n\n";
+    p+="Niche: "+niche+"\nFrequency: "+freq+"\nPrimary platform: "+plat+"\nProjection: "+months+" months\n\n";
+    p+="Provide a detailed projection:\n1. **SUBSCRIBER/VIEWER GROWTH** - Month-by-month estimate\n2. **REVENUE STREAMS** - Ad revenue, sponsorships, affiliate, products\n3. **MONTHLY REVENUE ESTIMATE** - Conservative / Realistic / Optimistic\n4. **TOTAL "+months+"-MONTH PROJECTION** - Sum for each scenario\n5. **KEY METRICS** - RPM, CPM, engagement rate assumptions\n6. **MONETIZATION TIPS** - 5 specific strategies for this niche\n\nBe realistic with numbers. Use current platform rates.";
+  }
+  else if(tab==="seo"){
+    var topic=document.getElementById("se-topic").value.trim();
+    var plat=document.getElementById("se-platform").value;
+    var focus=document.getElementById("se-focus").value;
+    if(!topic)return null;
+    p="You are an SEO expert for "+plat+" short-form video. Optimize content for: \""+topic+"\"\n\n";
+    p+="Focus: "+focus+"\n\n";
+    if(focus==="Full Package"||focus==="Title Only"){
+      p+="Provide 5 optimized title options (A/B test ready).\n";
+    }
+    if(focus==="Full Package"||focus==="Tags Only"){
+      p+="Provide 20 relevant tags/keywords sorted by search volume.\n";
+    }
+    if(focus==="Full Package"){
+      p+="Provide an optimized video description (200 words).\n";
+    }
+    if(focus==="Full Package"||focus==="Hashtags Only"){
+      p+="Provide 15 trending hashtags.\n";
+    }
+    p+="\nExplain the SEO reasoning behind each recommendation.";
+  }
+  return p;
+}
+
+async function generate(tab){
+  if(!checkLimit()){showToast(_("limitMsg"),"err");return;}
+  var now=Date.now();
+  if(now-lastGenTime<MIN_INTERVAL){showToast(_("cooldownMsg"),"err");return;}
+  var prompt=buildPrompt(tab);
+  if(!prompt){showToast(curLang==="zh"?"请填写主题":"Please enter a topic","err");return;}
+
+  var btn=document.getElementById("gen-"+tab);
+  btn.disabled=true;btn.innerHTML='<span class="spinner"></span>'+((curLang==="zh")?"生成中...":"Generating...");
+  lastGenTime=now;
+
+  try{
+    var resp=await fetch(API_URL,{
+      method:"POST",
+      headers:{"Content-Type":"application/json","Authorization":"Bearer "+API_KEY},
+      body:JSON.stringify({model:"deepseek-chat",messages:[{role:"user",content:prompt}],temperature:0.85,max_tokens:3000})
+    });
+    var data=await resp.json();
+    var text=data.choices&&data.choices[0]?data.choices[0].message.content:"No result.";
+    showResult(tab,text);
+    incrementUsage();
+    saveHistory(tab,prompt,text);
+  }catch(e){
+    showToast("Generation failed: "+e.message,"err");
+  }finally{
+    btn.disabled=false;
+    btn.innerHTML=tab==="script"?"🔥 "+(curLang==="zh"?"生成脚本":"Generate Script"):
+                tab==="hook"?"🪝 "+(curLang==="zh"?"生成钩子":"Generate Hooks"):
+                tab==="trend"?"📊 "+(curLang==="zh"?"扫描趋势":"Scan Trends"):
+                tab==="calendar"?"📅 "+(curLang==="zh"?"生成日历":"Generate Calendar"):
+                tab==="compete"?"🔍 "+(curLang==="zh"?"分析竞品":"Analyze Competitors"):
+                tab==="thumb"?"🖼️ "+(curLang==="zh"?"生成缩略图":"Generate Thumbnails"):
+                tab==="revenue"?"📈 "+(curLang==="zh"?"计算收益":"Calculate Revenue"):
+                "🏷️ "+(curLang==="zh"?"优化SEO":"Optimize SEO");
+    render();
+  }
+}
+
+/* ===== Show Result ===== */
+function showResult(tab,text){
+  var box=document.getElementById("result-"+tab);
+  var textEl=document.getElementById("text-"+tab);
+  var actionsEl=document.getElementById("actions-"+tab);
+  var metaEl=document.getElementById("meta-"+tab);
+  textEl.textContent=text;
+  box.classList.add("show");
+
+  // Word count + engagement badge
+  var wc=text.split(/\s+/).filter(function(w){return w.length>0;}).length;
+  var engMatch=text.match(/(?:Viral Score|ENGAGEMENT SCORE|Score)[:\s]*(\d+)/i);
+  var engScore=engMatch?parseInt(engMatch[1]):null;
+  var metaHtml='<span>'+wc+" "+_("wordsLabel")+'</span>';
+  if(engScore){
+    var cls=engScore>=7?"eng-high":engScore>=4?"eng-mid":"eng-low";
+    metaHtml+='<span class="engagement-badge '+cls+'">'+_("engScore")+": "+engScore+"/10</span>";
+  }
+  if(tab==="revenue"){
+    metaEl.style.display="none";
+    var revCards=document.getElementById("rev-cards");
+    var lowMatch=text.match(/Conservative[:\s]*\$?([\d,]+)/i);
+    var midMatch=text.match(/Realistic[:\s]*\$?([\d,]+)/i);
+    var highMatch=text.match(/Optimistic[:\s]*\$?([\d,]+)/i);
+    // Try different patterns
+    var lines=text.split("\n");
+    var lowV="",midV="",highV="";
+    lines.forEach(function(ln){
+      var m;
+      if(/conservative/i.test(ln)){m=ln.match(/\$?([\d,]+)/);if(m)lowV=m[1];}
+      if(/realistic/i.test(ln)){m=ln.match(/\$?([\d,]+)/);if(m)midV=m[1];}
+      if(/optimistic/i.test(ln)){m=ln.match(/\$?([\d,]+)/);if(m)highV=m[1];}
+    });
+    if(lowV||midV||highV){
+      revCards.innerHTML='<div class="rev-card"><div class="rev-num">$'+(lowV||"—")+'</div><div class="rev-label">Conservative</div></div><div class="rev-card"><div class="rev-num">$'+(midV||"—")+'</div><div class="rev-label">Realistic</div></div><div class="rev-card"><div class="rev-num">$'+(highV||"—")+'</div><div class="rev-label">Optimistic</div></div>';
+    }
+  }else{metaEl.innerHTML=metaHtml;metaEl.style.display="flex";}
+
+  // Action buttons
+  actionsEl.innerHTML='<button class="btn-sm" id="act-copy-'+tab+'">📋 '+_("copyBtn")+'</button><button class="btn-sm" id="act-pdf-'+tab+'">📄 '+_("pdfBtn")+'</button><button class="btn-sm" id="act-txt-'+tab+'">📝 '+_("txtBtn")+'</button><button class="btn-sm" id="act-regen-'+tab+'">🔄 '+_("regenBtn")+'</button>';
+  document.getElementById("act-copy-"+tab).onclick=function(){navigator.clipboard.writeText(text).then(function(){showToast(curLang==="zh"?"已复制！":"Copied!","ok");});};
+  document.getElementById("act-pdf-"+tab).onclick=function(){downloadPDF(tab,text);};
+  document.getElementById("act-txt-"+tab).onclick=function(){downloadTXT(tab,text);};
+  document.getElementById("act-regen-"+tab).onclick=function(){generate(tab);};
+}
+
+/* ===== History ===== */
+var HIST_KEY="ar_hist_";
+function saveHistory(tab,prompt,text){
+  var item={p:prompt.slice(0,80),t:text,ts:new Date().toISOString()};
+  histories[tab].unshift(item);
+  if(histories[tab].length>20)histories[tab].pop();
+  try{localStorage.setItem(HIST_KEY+tab,JSON.stringify(histories[tab]));}catch(e){}
+  renderHistory(tab);
+}
+function loadHistories(){
+  ["script","hook","trend","calendar","compete","thumb","revenue","seo"].forEach(function(tab){
+    try{var d=localStorage.getItem(HIST_KEY+tab);if(d)histories[tab]=JSON.parse(d);}catch(e){}
+  });
+}
+function renderHistory(tab){
+  var list=document.getElementById("hist-list-"+tab);
+  if(!list)return;
+  var items=histories[tab];
+  if(!items.length){list.innerHTML='<p style="font-size:13px;color:var(--sub);">'+_("noHist")+'</p>';return;}
+  list.innerHTML=items.map(function(it,i){
+    var d=new Date(it.ts);
+    var ds=d.toLocaleDateString(curLang==="zh"?"zh-CN":"en-US",{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"});
+    return '<div class="history-item" data-tab="'+tab+'" data-idx="'+i+'"><div class="hi-title">'+it.p+'</div><div class="hi-meta">'+ds+'</div></div>';
+  }).join("");
+  list.querySelectorAll(".history-item").forEach(function(el){
+    el.onclick=function(){
+      var t=el.getAttribute("data-tab");
+      var idx=parseInt(el.getAttribute("data-idx"));
+      if(histories[t]&&histories[t][idx])showResult(t,histories[t][idx].t);
+    };
+  });
+}
+
+/* ===== Exports ===== */
+function downloadPDF(tab,text){
+  if(typeof window.jspdf==="undefined"){showToast("PDF library not loaded","err");return;}
+  var doc=new window.jspdf.jsPDF();
+  var lines=doc.splitTextToSize(text,180);
+  doc.setFontSize(12);doc.text(lines,15,20);
+  doc.save("AutoReel_"+tab+"_"+Date.now()+".pdf");
+}
+function downloadTXT(tab,text){
+  var blob=new Blob([text],{type:"text/plain;charset=utf-8"});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement("a");a.href=url;a.download="AutoReel_"+tab+"_"+Date.now()+".txt";
+  document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
+}
+
+/* ===== Toast ===== */
+function showToast(msg,type){
+  var t=document.createElement("div");
+  t.className="toast toast-"+(type==="ok"?"ok":"err");
+  t.textContent=msg;document.body.appendChild(t);
+  setTimeout(function(){t.remove();},3000);
+}
+
+/* ===== Modals ===== */
+function openModal(id){document.getElementById(id).classList.add("show");}
+function closeModal(id){document.getElementById(id).classList.remove("show");}
+
+/* ===== Section Navigation ===== */
+function showSection(sec){
+  var hero=document.getElementById("hero-section");
+  var feat=document.getElementById("features-section");
+  var price=document.getElementById("pricing-section");
+  var app=document.getElementById("app-section");
+  var footer=document.querySelector(".site-footer");
+  var isHome=(sec==="home");
+  hero.style.display=(isHome||sec==="features"||sec==="pricing")?"":"none";
+  feat.style.display=(isHome||sec==="features")?"":"none";
+  price.style.display=(isHome||sec==="pricing")?"":"none";
+  app.style.display=sec==="app"?"block":"none";
+  if(sec==="app")app.classList.add("active");
+  if(footer)footer.style.display=sec==="app"?"none":"";
+  window.scrollTo(0,0);
+  if(sec==="features"){feat.scrollIntoView({behavior:"smooth"});}
+  if(sec==="pricing"){price.scrollIntoView({behavior:"smooth"});}
+}
+
+/* ===== Tab Switch ===== */
+function switchTab(tab){
+  currentTab=tab;
+  document.querySelectorAll(".tab-btn").forEach(function(b){b.classList.toggle("active",b.getAttribute("data-tab")===tab);});
+  document.querySelectorAll(".tab-content").forEach(function(c){c.classList.toggle("active",c.id==="tab-"+tab);});
+  render();
+}
+
+/* ===== Render ===== */
+function render(){
+  // Usage info
+  ["script","hook","trend","calendar","compete","thumb","revenue","seo"].forEach(function(tab){
+    var el=document.getElementById("usage-"+tab);
+    if(!el)return;
+    if(planLevel==="free"){
+      var pct=Math.min((usageCount/planLimits.free)*100,100);
+      var upgradeLink=usageCount>=planLimits.free?'<a href="#" id="usage-upgrade-'+tab+'" style="margin-left:8px;font-size:11px;font-weight:700;color:var(--pri);text-decoration:underline;">'+(curLang==="zh"?"↑ 升级":"↑ Upgrade")+'</a>':'';
+      el.innerHTML='<span class="plan-tag plan-free">FREE</span><div class="usage-bar"><div class="usage-bar-fill" style="width:'+pct+'%"></div></div><span>'+usageCount+"/"+planLimits.free+" "+(curLang==="zh"?"今日":"today")+'</span>'+upgradeLink;
+    }else{
+      el.innerHTML='<span class="plan-tag plan-'+planLevel+'">'+planLevel.toUpperCase()+'</span><span style="font-size:13px;color:var(--success);">'+(curLang==="zh"?"无限额度":"Unlimited")+'</span>';
+    }
+  });
+  // Render histories for current tab
+  renderHistory(currentTab);
+}
+
+/* ===== Bind Events ===== */
+function bindEvents(){
+  // Lang
+  document.getElementById("btn-zh").onclick=function(){applyLang.call({lang:"zh"});};
+  document.getElementById("btn-en").onclick=function(){applyLang.call({lang:"en"});};
+
+  // Nav
+  document.getElementById("nav-home").onclick=function(e){e.preventDefault();showSection("home");};
+  document.getElementById("nav-features").onclick=function(e){e.preventDefault();showSection("features");};
+  document.getElementById("nav-pricing").onclick=function(e){e.preventDefault();showSection("pricing");};
+  document.getElementById("nav-app").onclick=function(e){e.preventDefault();showSection("app");};
+  document.getElementById("nav-contact").onclick=function(e){e.preventDefault();window.location.href="mailto:qiuzhixu@icloud.com";};
+
+  // Mobile nav
+  document.getElementById("hamburger-btn").onclick=function(){
+    document.getElementById("mobile-menu").classList.toggle("open");
+  };
+  document.getElementById("m-home").onclick=function(e){e.preventDefault();showSection("home");document.getElementById("mobile-menu").classList.remove("open");};
+  document.getElementById("m-features").onclick=function(e){e.preventDefault();showSection("features");document.getElementById("mobile-menu").classList.remove("open");};
+  document.getElementById("m-pricing").onclick=function(e){e.preventDefault();showSection("pricing");document.getElementById("mobile-menu").classList.remove("open");};
+  document.getElementById("m-app").onclick=function(e){e.preventDefault();showSection("app");document.getElementById("mobile-menu").classList.remove("open");};
+  document.getElementById("m-contact").onclick=function(e){e.preventDefault();document.getElementById("mobile-menu").classList.remove("open");window.location.href="mailto:qiuzhixu@icloud.com";};
+
+  // Hero buttons
+  document.getElementById("hero-start").onclick=function(){showSection("app");};
+  document.getElementById("hero-see-features").onclick=function(){showSection("features");};
+
+  // Tab buttons
+  document.querySelectorAll(".tab-btn").forEach(function(btn){
+    btn.onclick=function(){switchTab(btn.getAttribute("data-tab"));};
+  });
+
+  // Generate buttons
+  ["script","hook","trend","calendar","compete","thumb","revenue","seo"].forEach(function(tab){
+    var btn=document.getElementById("gen-"+tab);
+    if(btn)btn.onclick=function(){generate(tab);};
+  });
+
+  // Pricing buttons
+  // Free plan button → go to app
+  var freePlanBtn=document.getElementById("free-plan-btn");
+  if(freePlanBtn && planLevel==="free"){freePlanBtn.onclick=function(){showSection("app");};}
+
+  // Upgrade bar link
+  var upgradeLink=document.getElementById("upgrade-link");
+  if(upgradeLink)upgradeLink.onclick=function(e){e.preventDefault();showSection("pricing");};
+
+  // Show/hide upgrade bar
+  var upgradeBar=document.getElementById("app-upgrade-bar");
+  if(upgradeBar)upgradeBar.style.display=(planLevel==="free")?"block":"none";
+
+  // Pricing buttons — update "Current Plan" dynamically
+  var freeBtn=document.getElementById("free-plan-btn");
+  if(freeBtn){
+    if(planLevel==="free"){freeBtn.textContent=_("pCurr");freeBtn.style.opacity="0.7";freeBtn.style.cursor="default";}
+    else{freeBtn.textContent=_("pCurr");freeBtn.style.display="none";}
+  }
+  document.querySelectorAll(".btn-price-fill").forEach(function(btn){
+    btn.onclick=function(){
+      var plan=btn.getAttribute("data-plan");
+      var amount=parseFloat(btn.getAttribute("data-amount"));
+      openPayModal(plan,amount);
+    };
+  });
+
+  // Modal close
+  document.getElementById("pay-close").onclick=function(){closeModal("pay-modal");};
+  document.getElementById("pay-modal").onclick=function(e){if(e.target===this)closeModal("pay-modal");};
+  document.getElementById("disc-close").onclick=function(){closeModal("disc-modal");};
+  document.getElementById("disc-modal").onclick=function(e){if(e.target===this)closeModal("disc-modal");};
+}
+
+/* ===== Init ===== */
+function init(){
+  calcFingerprint();
+  checkLimit();
+  try{var p=localStorage.getItem("ar_plan");if(p)planLevel=p;}catch(e){}
+  loadHistories();
+  bindEvents();
+  showSection("home");
+  switchTab("script");
+  render();
+}
+
+init();
+})();
+</script>
+</body>
+</html>
