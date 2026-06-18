@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="description" content="AutoReel - AI Faceless Video Command Center. Generate scripts, hooks, thumbnails, content calendars & more for TikTok, YouTube Shorts & Reels. AI无脸视频创作中心，脚本/钩子/缩略图/排期一站搞定。">
+<meta name="description" content="AutoReel - AI Faceless Video Command Center. 10 AI tools: scripts, hooks, thumbnails, content calendars, viral sounds, engagement prediction & more for TikTok, YouTube Shorts & Reels. AI无脸视频创作中心，10大AI工具一站搞定。">
 <meta name="keywords" content="AI faceless video, TikTok script, YouTube Shorts, auto video, AI视频脚本, 无脸视频, 短视频自动化">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://voxvillage.github.io/AutoReel/">
@@ -78,6 +78,8 @@ input,textarea,select{font-family:inherit;}
 .tab-btn{padding:10px 16px;border-radius:8px;font-size:13px;font-weight:600;color:var(--sub);background:transparent;white-space:nowrap;transition:all .2s;}
 .tab-btn:hover{background:var(--prbg);color:var(--pri);}
 .tab-btn.active{background:linear-gradient(135deg,var(--pri),var(--accent));color:#fff;}
+.tab-btn.new-tab{position:relative;}
+.tab-btn.new-tab::after{content:'NEW';position:absolute;top:-6px;right:-6px;background:var(--success);color:#fff;font-size:0.55rem;font-weight:700;padding:1px 5px;border-radius:6px;}
 
 /* Tab content */
 .tab-content{display:none;}
@@ -251,7 +253,7 @@ input,textarea,select{font-family:inherit;}
   <div class="hero-inner">
     <div class="hero-badge">🚀 AI Faceless Video Command Center</div>
     <h1 data-i18n="heroTitle">Create Viral Faceless Videos on Autopilot</h1>
-    <p data-i18n="heroSub">8 AI-powered tools: scripts, hooks, trends, calendars, thumbnails, competitor analysis, SEO & revenue estimation — all in one platform.</p>
+    <p data-i18n="heroSub">10 AI-powered tools: scripts, hooks, trends, calendars, thumbnails, competitor analysis, SEO, revenue estimation, viral sounds & engagement prediction — all in one platform.</p>
     <div class="hero-btns">
       <button class="btn-primary" id="hero-start">🎬 Start Creating — Free</button>
       <button class="btn-outline" id="hero-see-features">View Features →</button>
@@ -261,7 +263,7 @@ input,textarea,select{font-family:inherit;}
       <span style="background:rgba(139,92,246,0.1);padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600;color:#8b5cf6;">💳 From $14.9/mo</span>
     </div>
     <div class="hero-stats">
-      <div class="hero-stat"><div class="num">8</div><div class="label" data-i18n="statTools">AI Tools</div></div>
+      <div class="hero-stat"><div class="num">10</div><div class="label" data-i18n="statTools">AI Tools</div></div>
       <div class="hero-stat"><div class="num">10</div><div class="label" data-i18n="statLangs">Languages</div></div>
       <div class="hero-stat"><div class="num">3</div><div class="label" data-i18n="statCreators">Platforms</div></div>
     </div>
@@ -271,7 +273,7 @@ input,textarea,select{font-family:inherit;}
 <!-- Features -->
 <section class="features" id="features-section">
   <div class="section-title">
-    <h2 data-i18n="featTitle">8 AI Tools in One Platform</h2>
+    <h2 data-i18n="featTitle">10 AI Tools in One Platform</h2>
     <p data-i18n="featSub">Everything you need to create, optimize & scale faceless video channels</p>
   </div>
   <div class="feat-grid">
@@ -283,6 +285,8 @@ input,textarea,select{font-family:inherit;}
     <div class="feat-card"><div class="feat-icon">🖼️</div><h3 data-i18n="f6t">Thumbnail Prompter</h3><p data-i18n="f6d">Generate thumbnail concepts that get clicks</p></div>
     <div class="feat-card"><div class="feat-icon">📈</div><h3 data-i18n="f7t">Revenue Estimator</h3><p data-i18n="f7d">Calculate potential earnings by niche & posting frequency</p></div>
     <div class="feat-card"><div class="feat-icon">🏷️</div><h3 data-i18n="f8t">SEO Optimizer</h3><p data-i18n="f8d">Platform-specific titles, descriptions, hashtags & tags</p></div>
+    <div class="feat-card" style="border-color:var(--success);box-shadow:0 2px 12px rgba(5,150,105,0.1);"><div class="feat-icon">🎵</div><h3 data-i18n="f9t">Viral Sound Finder</h3><p data-i18n="f9d">Discover trending audio tracks & sound strategies for maximum reach</p></div>
+    <div class="feat-card" style="border-color:var(--success);box-shadow:0 2px 12px rgba(5,150,105,0.1);"><div class="feat-icon">🔮</div><h3 data-i18n="f10t">Engagement Predictor</h3><p data-i18n="f10d">AI predicts views, likes & shares before you even hit record</p></div>
   </div>
 </section>
 
@@ -299,7 +303,7 @@ input,textarea,select{font-family:inherit;}
       <div class="price-amount">$0<span>/mo</span></div>
       <div class="price-limit" data-i18n="pFree">3 generations / day</div>
       <ul class="price-features">
-        <li data-i18n="p1a">All 8 AI tools</li>
+        <li data-i18n="p1a">All 10 AI tools</li>
         <li data-i18n="p1b">3 generations/day</li>
         <li data-i18n="p1c">Basic templates</li>
         <li data-i18n="p1d">TXT & PDF export</li>
@@ -311,7 +315,7 @@ input,textarea,select{font-family:inherit;}
       <div class="price-amount">$14.9<span>/mo</span></div>
       <div class="price-limit" data-i18n="p2l">30 generations / month</div>
       <ul class="price-features">
-        <li data-i18n="p1a">All 8 AI tools</li>
+        <li data-i18n="p1a">All 10 AI tools</li>
         <li data-i18n="p2a">30 generations/mo</li>
         <li data-i18n="p2b">A/B hook variants</li>
         <li data-i18n="p2c">Content calendar</li>
@@ -324,7 +328,7 @@ input,textarea,select{font-family:inherit;}
       <div class="price-amount">$39<span>/mo</span></div>
       <div class="price-limit" data-i18n="p3l">150 generations / month</div>
       <ul class="price-features">
-        <li data-i18n="p1a">All 8 AI tools</li>
+        <li data-i18n="p1a">All 10 AI tools</li>
         <li data-i18n="p3a">150 generations/mo</li>
         <li data-i18n="p3b">Competitor analysis</li>
         <li data-i18n="p3c">Revenue estimator</li>
@@ -337,7 +341,7 @@ input,textarea,select{font-family:inherit;}
       <div class="price-amount">$79<span>/mo</span></div>
       <div class="price-limit" data-i18n="p4l">500 generations / month</div>
       <ul class="price-features">
-        <li data-i18n="p1a">All 8 AI tools</li>
+        <li data-i18n="p1a">All 10 AI tools</li>
         <li data-i18n="p4a">500 generations/mo</li>
         <li data-i18n="p4b">Full competitor spy</li>
         <li data-i18n="p4c">White-label export</li>
@@ -360,6 +364,8 @@ input,textarea,select{font-family:inherit;}
     <button class="tab-btn" data-tab="thumb">🖼️ Thumb</button>
     <button class="tab-btn" data-tab="revenue">📈 Revenue</button>
     <button class="tab-btn" data-tab="seo">🏷️ SEO</button>
+    <button class="tab-btn new-tab" data-tab="sound">🎵 Sound</button>
+    <button class="tab-btn new-tab" data-tab="engagement">🔮 Predict</button>
   </div>
 
   <!-- Script Studio -->
@@ -371,7 +377,7 @@ input,textarea,select{font-family:inherit;}
       <div class="form-group"><label data-i18n="lTemplate">Script Template</label><select id="s-template"><option value="Listicle / Tips">Listicle / Tips</option><option value="Story / Narrative">Story / Narrative</option><option value="Before → After">Before → After</option><option value="How-To / Tutorial">How-To / Tutorial</option><option value="Controversial Take">Controversial Take</option><option value="Product Review">Product Review</option></select></div>
       <div class="form-group"><label data-i18n="lAudience">Target Audience</label><select id="s-audience"><option value="General">General</option><option value="Gen Z (18-24)">Gen Z (18-24)</option><option value="Millennials (25-40)">Millennials (25-40)</option><option value="Professionals">Professionals</option><option value="Parents">Parents</option><option value="Students">Students</option></select></div>
       <div class="form-group"><label data-i18n="lLang">Language</label><select id="s-lang"><option value="English">English</option><option value="Spanish">Spanish</option><option value="French">French</option><option value="German">German</option><option value="Portuguese">Portuguese</option><option value="Japanese">Japanese</option><option value="Korean">Korean</option><option value="Chinese">Chinese</option><option value="Arabic">Arabic</option><option value="Hindi">Hindi</option></select></div>
-      <div class="form-group"><label data-i18n="lDuration">Duration</label><select id="s-duration"><option value="15-30s">15-30s</option><option value="30-60s" selected>30-60s</option><option value="60-90s">60-90s</option></select></div>
+      <div class="form-group"><label data-i18n="lDuration">Duration</label><select id="s-duration"><option value="15-30s">15-30s</option><option value="30-60s" selected>30-60s</option><option value="60-90s">60-90s</option><option value="3-5min">3-5min</option><option value="5-10min">5-10min</option><option value="10-15min" data-paid="1">10-15min (Pro+)</option><option value="15-30min" data-paid="1">15-30min (Pro+)</option><option value="30-60min" data-paid="1">30-60min (Agency)</option><option value="1-2hr" data-paid="1">1-2 hours (Agency)</option><option value="2-4hr" data-paid="1">2-4 hours (Agency)</option></select></div>
     </div>
     <div class="gen-bar">
       <button class="btn-gen" id="gen-script">🔥 Generate Script</button>
@@ -527,7 +533,49 @@ input,textarea,select{font-family:inherit;}
     </div>
     <div class="history-section" id="hist-seo"><h4 data-i18n="histTitle">Recent History</h4><div class="history-list" id="hist-list-seo"></div></div>
   </div>
-</div>
+
+  <!-- Viral Sound Finder -->
+  <div class="tab-content" id="tab-sound">
+    <div class="form-grid">
+      <div class="form-group full"><label data-i18n="lSoundNiche">Your Niche / Content Style</label><input type="text" id="sd-niche" placeholder="e.g. fitness motivation, cooking, tech reviews"></div>
+      <div class="form-group"><label data-i18n="lPlatform">Platform</label><select id="sd-platform"><option value="TikTok">TikTok</option><option value="YouTube Shorts">YouTube Shorts</option><option value="Instagram Reels">Instagram Reels</option></select></div>
+      <div class="form-group"><label data-i18n="lSoundMood">Mood / Vibe</label><select id="sd-mood"><option value="Energetic / Hype">Energetic / Hype</option><option value="Chill / Lofi">Chill / Lofi</option><option value="Emotional / Cinematic">Emotional / Cinematic</option><option value="Funny / Quirky">Funny / Quirky</option><option value="Dark / Mysterious">Dark / Mysterious</option><option value="Uplifting / Inspirational">Uplifting / Inspirational</option></select></div>
+      <div class="form-group"><label data-i18n="lSoundRegion">Music Region</label><select id="sd-region"><option value="Global">Global</option><option value="US">US</option><option value="K-Pop">K-Pop</option><option value="Latin">Latin</option><option value="Japanese">Japanese</option><option value="European">European</option></select></div>
+    </div>
+    <div class="gen-bar">
+      <button class="btn-gen" id="gen-sound">🎵 Find Viral Sounds</button>
+      <div class="usage-info" id="usage-sound"></div>
+    </div>
+    <div class="result-box" id="result-sound">
+      <h4>🎵 <span data-i18n="rSound">Viral Sound Recommendations</span></h4>
+      <div class="result-text" id="text-sound"></div>
+      <div class="result-meta" id="meta-sound"></div>
+      <div class="result-actions" id="actions-sound"></div>
+    </div>
+    <div class="history-section" id="hist-sound"><h4 data-i18n="histTitle">Recent History</h4><div class="history-list" id="hist-list-sound"></div></div>
+  </div>
+
+  <!-- Engagement Predictor -->
+  <div class="tab-content" id="tab-engagement">
+    <div class="form-grid">
+      <div class="form-group full"><label data-i18n="lEngTitle">Video Title / Topic</label><input type="text" id="eg-title" placeholder="e.g. 5 Morning Habits That Changed My Life"></div>
+      <div class="form-group"><label data-i18n="lPlatform">Platform</label><select id="eg-platform"><option value="TikTok">TikTok</option><option value="YouTube Shorts">YouTube Shorts</option><option value="Instagram Reels">Instagram Reels</option></select></div>
+      <div class="form-group"><label data-i18n="lEngNiche">Niche</label><select id="eg-niche"><option value="Finance / Make Money">Finance / Make Money</option><option value="Health / Fitness">Health / Fitness</option><option value="Tech / Gaming">Tech / Gaming</option><option value="Education">Education</option><option value="Entertainment / Comedy">Entertainment / Comedy</option><option value="Beauty / Fashion">Beauty / Fashion</option><option value="Food / Cooking">Food / Cooking</option><option value="Motivation">Motivation</option></select></div>
+      <div class="form-group"><label data-i18n="lEngLength">Video Length</label><select id="eg-length"><option value="15-30s">15-30s</option><option value="30-60s" selected>30-60s</option><option value="60-90s">60-90s</option></select></div>
+      <div class="form-group"><label data-i18n="lEngHook">Hook Type</label><select id="eg-hook"><option value="Shocking Stat">Shocking Stat</option><option value="Question">Question</option><option value="Bold Claim">Bold Claim</option><option value="Story">Story</option><option value="Visual / Pattern Interrupt">Visual / Pattern Interrupt</option></select></div>
+    </div>
+    <div class="gen-bar">
+      <button class="btn-gen" id="gen-engagement">🔮 Predict Engagement</button>
+      <div class="usage-info" id="usage-engagement"></div>
+    </div>
+    <div class="result-box" id="result-engagement">
+      <h4>🔮 <span data-i18n="rEngagement">Engagement Prediction</span></h4>
+      <div class="revenue-result" id="eng-cards"></div>
+      <div class="result-text" id="text-engagement" style="margin-top:16px;"></div>
+      <div class="result-actions" id="actions-engagement"></div>
+    </div>
+    <div class="history-section" id="hist-engagement"><h4 data-i18n="histTitle">Recent History</h4><div class="history-list" id="hist-list-engagement"></div></div>
+  </div>
 
 <!-- Payment Modal -->
 <div class="modal-overlay" id="pay-modal">
@@ -571,10 +619,10 @@ input,textarea,select{font-family:inherit;}
 /* ===== i18n ===== */
 var I18N={
 zh:{
-heroTitle:"全自动创建病毒式无脸视频",heroSub:"8大AI工具：脚本、钩子、趋势、排期、缩略图、竞品分析、SEO优化、收益预估——一个平台全搞定。",statTools:"AI工具",statLangs:"语言",statCreators:"平台",featTitle:"一个平台，8大AI工具",featSub:"创建、优化、规模化无脸视频频道所需的一切",f1t:"脚本工坊",f1d:"完整脚本含钩子、场景、CTA和互动评分",f2t:"钩子实验室",f2d:"生成病毒式开头钩子，支持A/B变体",f3t:"趋势雷达",f3d:"发现你的领域中的热门话题和病毒内容创意",f4t:"内容日历",f4d:"AI规划月度发布排期，优化增长",f5t:"竞品侦察",f5d:"分析竞品，发现他们遗漏的内容空白",f6t:"缩略图提示器",f6d:"生成高点击率缩略图概念",f7t:"收益预估器",f7d:"按领域和发布频率计算潜在收益",f8t:"SEO优化器",f8d:"平台专属标题、描述、标签和话题标签",priceTitle:"简单透明的定价",priceSub:"免费开始，准备好了再升级",pFree:"3次生成 / 天",p1a:"全部8个AI工具",p1b:"3次/天",p1c:"基础模板",p1d:"TXT和PDF导出",p2l:"30次生成 / 月",p2a:"30次/月",p2b:"A/B钩子变体",p2c:"内容日历",p2d:"互动评分",p3l:"150次生成 / 月",p3a:"150次/月",p3b:"竞品分析",p3c:"收益预估器",p3d:"批量生成",p4l:"500次生成 / 月",p4a:"500次/月",p4b:"完整竞品侦察",p4c:"白标导出",p4d:"优先生成",pCurr:"当前套餐",lTopic:"主题 / 创意",lPlatform:"平台",lStyle:"视觉风格",lTemplate:"脚本模板",lAudience:"目标受众",lLang:"语言",lDuration:"时长",lHookTopic:"视频主题",lHookStyle:"钩子风格",lAB:"A/B变体数",lNiche:"你的领域",lRegion:"地区",lNiche2:"领域",lFreq:"发布频率",lCompNiche:"你的领域 / 竞品关键词",lCompFocus:"分析重点",lThumbTopic:"视频标题 / 主题",lThumbStyle:"缩略图风格",lVariants:"变体数",lRevNiche:"领域",lRevFreq:"发布频率",lRevPlatform:"主平台",lRevMonths:"预测周期",lSeoTopic:"视频主题 / 描述",lSeoFocus:"SEO重点",rScript:"脚本结果",rHook:"钩子变体",rTrend:"趋势报告",rCal:"内容日历",rComp:"竞品分析",rThumb:"缩略图概念",rRev:"收益预测",rSeo:"SEO优化",histTitle:"最近记录",payTitle:"完成支付",payNote:"支付成功后额度将自动激活。",discTitle:"免责声明",disc1:"AI生成内容仅供参考，发布前请审核。",disc2:"内容由DeepSeek AI生成，可能存在不准确。",disc3:"用户需自行确保内容符合各平台政策。",disc4:"数字服务——额度使用后不支持退款。",cooldownMsg:"⏳ 请稍等几秒再生成下一个内容。",limitMsg:"今日免费额度已用完，升级套餐解锁更多。",wordsLabel:"字数",engScore:"互动评分",copyBtn:"复制",pdfBtn:"PDF",txtBtn:"TXT",regenBtn:"重新生成",noHist:"暂无记录"
+heroTitle:"全自动创建病毒式无脸视频",heroSub:"10大AI工具：脚本、钩子、趋势、排期、缩略图、竞品分析、SEO优化、收益预估、热门音效、互动预测——一个平台全搞定。",statTools:"AI工具",statLangs:"语言",statCreators:"平台",featTitle:"一个平台，10大AI工具",featSub:"创建、优化、规模化无脸视频频道所需的一切",f1t:"脚本工坊",f1d:"完整脚本含钩子、场景、CTA和互动评分",f2t:"钩子实验室",f2d:"生成病毒式开头钩子，支持A/B变体",f3t:"趋势雷达",f3d:"发现你的领域中的热门话题和病毒内容创意",f4t:"内容日历",f4d:"AI规划月度发布排期，优化增长",f5t:"竞品侦察",f5d:"分析竞品，发现他们遗漏的内容空白",f6t:"缩略图提示器",f6d:"生成高点击率缩略图概念",f7t:"收益预估器",f7d:"按领域和发布频率计算潜在收益",f8t:"SEO优化器",f8d:"平台专属标题、描述、标签和话题标签",f9t:"热门音效",f9d:"发现热门音频和配乐策略，最大化触达",f10t:"互动预测器",f10d:"AI在发布前预测播放量、点赞和分享",priceTitle:"简单透明的定价",priceSub:"免费开始，准备好了再升级",pFree:"3次生成 / 天",p1a:"全部10个AI工具",p1b:"3次/天",p1c:"基础模板",p1d:"TXT和PDF导出",p2l:"30次生成 / 月",p2a:"30次/月",p2b:"A/B钩子变体",p2c:"内容日历",p2d:"互动评分",p3l:"150次生成 / 月",p3a:"150次/月",p3b:"竞品分析",p3c:"收益预估器",p3d:"批量生成",p4l:"500次生成 / 月",p4a:"500次/月",p4b:"完整竞品侦察",p4c:"白标导出",p4d:"优先生成",pCurr:"当前套餐",lTopic:"主题 / 创意",lPlatform:"平台",lStyle:"视觉风格",lTemplate:"脚本模板",lAudience:"目标受众",lLang:"语言",lDuration:"时长",lHookTopic:"视频主题",lHookStyle:"钩子风格",lAB:"A/B变体数",lNiche:"你的领域",lRegion:"地区",lNiche2:"领域",lFreq:"发布频率",lCompNiche:"你的领域 / 竞品关键词",lCompFocus:"分析重点",lThumbTopic:"视频标题 / 主题",lThumbStyle:"缩略图风格",lVariants:"变体数",lRevNiche:"领域",lRevFreq:"发布频率",lRevPlatform:"主平台",lRevMonths:"预测周期",lSeoTopic:"视频主题 / 描述",lSeoFocus:"SEO重点",rScript:"脚本结果",rHook:"钩子变体",rTrend:"趋势报告",rCal:"内容日历",rComp:"竞品分析",rThumb:"缩略图概念",rRev:"收益预测",rSeo:"SEO优化",histTitle:"最近记录",payTitle:"完成支付",payNote:"支付成功后额度将自动激活。",discTitle:"免责声明",disc1:"AI生成内容仅供参考，发布前请审核。",disc2:"内容由DeepSeek AI生成，可能存在不准确。",disc3:"用户需自行确保内容符合各平台政策。",disc4:"数字服务——额度使用后不支持退款。",cooldownMsg:"⏳ 请稍等几秒再生成下一个内容。",limitMsg:"今日免费额度已用完，升级套餐解锁更多。",wordsLabel:"字数",engScore:"互动评分",copyBtn:"复制",pdfBtn:"PDF",txtBtn:"TXT",regenBtn:"重新生成",noHist:"暂无记录",lSoundNiche:"你的领域 / 内容风格",lSoundMood:"情绪 / 氛围",lSoundRegion:"音乐地区",lEngTitle:"视频标题 / 主题",lEngNiche:"领域",lEngLength:"视频长度",lEngHook:"钩子类型",rSound:"热门音效推荐",rEngagement:"互动预测"
 },
 en:{
-heroTitle:"Create Viral Faceless Videos on Autopilot",heroSub:"8 AI-powered tools: scripts, hooks, trends, calendars, thumbnails, competitor analysis, SEO & revenue estimation — all in one platform.",statTools:"AI Tools",statLangs:"Languages",statCreators:"Platforms",featTitle:"8 AI Tools in One Platform",featSub:"Everything you need to create, optimize & scale faceless video channels",f1t:"Script Studio",f1d:"Full scripts with hooks, scenes, CTAs & engagement scoring",f2t:"Hook Lab",f2d:"Generate viral opening hooks with A/B variants",f3t:"Trend Radar",f3d:"Discover trending topics & viral content ideas in your niche",f4t:"Content Calendar",f4d:"AI-planned monthly posting schedule optimized for growth",f5t:"Competitor Spy",f5d:"Analyze competitors & find content gaps they missed",f6t:"Thumbnail Prompter",f6d:"Generate thumbnail concepts that get clicks",f7t:"Revenue Estimator",f7d:"Calculate potential earnings by niche & posting frequency",f8t:"SEO Optimizer",f8d:"Platform-specific titles, descriptions, hashtags & tags",priceTitle:"Simple, Transparent Pricing",priceSub:"Start free. Upgrade when you're ready to scale.",pFree:"3 generations / day",p1a:"All 8 AI tools",p1b:"3 generations/day",p1c:"Basic templates",p1d:"TXT & PDF export",p2l:"30 generations / month",p2a:"30 generations/mo",p2b:"A/B hook variants",p2c:"Content calendar",p2d:"Engagement scoring",p3l:"150 generations / month",p3a:"150 generations/mo",p3b:"Competitor analysis",p3c:"Revenue estimator",p3d:"Batch generation",p4l:"500 generations / month",p4a:"500 generations/mo",p4b:"Full competitor spy",p4c:"White-label export",p4d:"Priority generation",pCurr:"Current Plan",lTopic:"Topic / Idea",lPlatform:"Platform",lStyle:"Visual Style",lTemplate:"Script Template",lAudience:"Target Audience",lLang:"Language",lDuration:"Duration",lHookTopic:"Video Topic",lHookStyle:"Hook Style",lAB:"A/B Variants",lNiche:"Your Niche",lRegion:"Region",lNiche2:"Niche",lFreq:"Posting Frequency",lCompNiche:"Your Niche / Competitor Keywords",lCompFocus:"Analysis Focus",lThumbTopic:"Video Title / Topic",lThumbStyle:"Thumbnail Style",lVariants:"Variants",lRevNiche:"Niche",lRevFreq:"Posting Frequency",lRevPlatform:"Primary Platform",lRevMonths:"Projection Period",lSeoTopic:"Video Topic / Description",lSeoFocus:"SEO Focus",rScript:"Script Result",rHook:"Hook Variants",rTrend:"Trend Report",rCal:"Content Calendar",rComp:"Competitor Analysis",rThumb:"Thumbnail Concepts",rRev:"Revenue Projection",rSeo:"SEO Optimization",histTitle:"Recent History",payTitle:"Complete Payment",payNote:"After payment, quota will be activated automatically.",discTitle:"Disclaimer",disc1:"AI-generated content is for reference only. Please review before publishing.",disc2:"Content is generated by DeepSeek AI and may contain inaccuracies.",disc3:"Users are responsible for ensuring content complies with platform policies.",disc4:"Digital service — no refunds after quota usage.",cooldownMsg:"⏳ Please wait a few seconds before generating again.",limitMsg:"Daily free limit reached. Upgrade to unlock more.",wordsLabel:"words",engScore:"Engagement",copyBtn:"Copy",pdfBtn:"PDF",txtBtn:"TXT",regenBtn:"Regenerate",noHist:"No history yet"
+heroTitle:"Create Viral Faceless Videos on Autopilot",heroSub:"10 AI-powered tools: scripts, hooks, trends, calendars, thumbnails, competitor analysis, SEO, revenue estimation, viral sounds & engagement prediction — all in one platform.",statTools:"AI Tools",statLangs:"Languages",statCreators:"Platforms",featTitle:"10 AI Tools in One Platform",featSub:"Everything you need to create, optimize & scale faceless video channels",f1t:"Script Studio",f1d:"Full scripts with hooks, scenes, CTAs & engagement scoring",f2t:"Hook Lab",f2d:"Generate viral opening hooks with A/B variants",f3t:"Trend Radar",f3d:"Discover trending topics & viral content ideas in your niche",f4t:"Content Calendar",f4d:"AI-planned monthly posting schedule optimized for growth",f5t:"Competitor Spy",f5d:"Analyze competitors & find content gaps they missed",f6t:"Thumbnail Prompter",f6d:"Generate thumbnail concepts that get clicks",f7t:"Revenue Estimator",f7d:"Calculate potential earnings by niche & posting frequency",f8t:"SEO Optimizer",f8d:"Platform-specific titles, descriptions, hashtags & tags",f9t:"Viral Sound Finder",f9d:"Discover trending audio tracks & sound strategies for maximum reach",f10t:"Engagement Predictor",f10d:"AI predicts views, likes & shares before you even hit record",priceTitle:"Simple, Transparent Pricing",priceSub:"Start free. Upgrade when you're ready to scale.",pFree:"3 generations / day",p1a:"All 10 AI tools",p1b:"3 generations/day",p1c:"Basic templates",p1d:"TXT & PDF export",p2l:"30 generations / month",p2a:"30 generations/mo",p2b:"A/B hook variants",p2c:"Content calendar",p2d:"Engagement scoring",p3l:"150 generations / month",p3a:"150 generations/mo",p3b:"Competitor analysis",p3c:"Revenue estimator",p3d:"Batch generation",p4l:"500 generations / month",p4a:"500 generations/mo",p4b:"Full competitor spy",p4c:"White-label export",p4d:"Priority generation",pCurr:"Current Plan",lTopic:"Topic / Idea",lPlatform:"Platform",lStyle:"Visual Style",lTemplate:"Script Template",lAudience:"Target Audience",lLang:"Language",lDuration:"Duration",lHookTopic:"Video Topic",lHookStyle:"Hook Style",lAB:"A/B Variants",lNiche:"Your Niche",lRegion:"Region",lNiche2:"Niche",lFreq:"Posting Frequency",lCompNiche:"Your Niche / Competitor Keywords",lCompFocus:"Analysis Focus",lThumbTopic:"Video Title / Topic",lThumbStyle:"Thumbnail Style",lVariants:"Variants",lRevNiche:"Niche",lRevFreq:"Posting Frequency",lRevPlatform:"Primary Platform",lRevMonths:"Projection Period",lSeoTopic:"Video Topic / Description",lSeoFocus:"SEO Focus",rScript:"Script Result",rHook:"Hook Variants",rTrend:"Trend Report",rCal:"Content Calendar",rComp:"Competitor Analysis",rThumb:"Thumbnail Concepts",rRev:"Revenue Projection",rSeo:"SEO Optimization",histTitle:"Recent History",payTitle:"Complete Payment",payNote:"After payment, quota will be activated automatically.",discTitle:"Disclaimer",disc1:"AI-generated content is for reference only. Please review before publishing.",disc2:"Content is generated by DeepSeek AI and may contain inaccuracies.",disc3:"Users are responsible for ensuring content complies with platform policies.",disc4:"Digital service — no refunds after quota usage.",cooldownMsg:"⏳ Please wait a few seconds before generating again.",limitMsg:"Daily free limit reached. Upgrade to unlock more.",wordsLabel:"words",engScore:"Engagement",copyBtn:"Copy",pdfBtn:"PDF",txtBtn:"TXT",regenBtn:"Regenerate",noHist:"No history yet",lSoundNiche:"Your Niche / Content Style",lSoundMood:"Mood / Vibe",lSoundRegion:"Music Region",lEngTitle:"Video Title / Topic",lEngNiche:"Niche",lEngLength:"Video Length",lEngHook:"Hook Type",rSound:"Viral Sound Recommendations",rEngagement:"Engagement Prediction"
 }
 };
 
@@ -599,7 +647,7 @@ var planLevel="free";
 var planLimits={free:3,starter:30,pro:150,agency:500};
 var lastGenTime=0;
 var MIN_INTERVAL=8000;
-var histories={script:[],hook:[],trend:[],calendar:[],compete:[],thumb:[],revenue:[],seo:[]};
+var histories={script:[],hook:[],trend:[],calendar:[],compete:[],thumb:[],revenue:[],seo:[],sound:[],engagement:[]};
 var payPendingPlan="";
 var payPendingAmount=0;
 
@@ -803,6 +851,27 @@ function buildPrompt(tab){
     }
     p+="\nExplain the SEO reasoning behind each recommendation.";
   }
+  else if(tab==="sound"){
+    var niche=document.getElementById("sd-niche").value.trim();
+    var plat=document.getElementById("sd-platform").value;
+    var mood=document.getElementById("sd-mood").value;
+    var region=document.getElementById("sd-region").value;
+    if(!niche)return null;
+    p="You are a viral sound strategist for "+plat+" short-form videos. The creator's niche is \""+niche+"\".\n\n";
+    p+="Mood/Vibe: "+mood+"\nMusic Region: "+region+"\nPlatform: "+plat+"\n\n";
+    p+="Provide:\n1. **TOP 10 TRENDING SOUNDS** - Currently viral audio tracks/sounds on "+plat+" that fit this niche (include sound name, artist if known, and why it works)\n2. **5 EVERGREEN AUDIO TYPES** - Sound styles that consistently perform well in this niche\n3. **SOUND STRATEGY** - When to use trending vs evergreen sounds\n4. **AUDIO TIMING TIPS** - Best places in a video to drop audio transitions\n5. **ORIGINAL SOUND ADVICE** - Tips for creating your own signature sounds\n6. **10 HASHTAG PAIRINGS** - Hashtags that work well with trending sounds\n\nBe specific with sound names and describe the vibe of each recommendation.";
+  }
+  else if(tab==="engagement"){
+    var title=document.getElementById("eg-title").value.trim();
+    var plat=document.getElementById("eg-platform").value;
+    var niche=document.getElementById("eg-niche").value;
+    var length=document.getElementById("eg-length").value;
+    var hookType=document.getElementById("eg-hook").value;
+    if(!title)return null;
+    p="You are a social media engagement analyst. Predict the performance of this "+plat+" short video idea:\n\n";
+    p+="Title/Topic: \""+title+"\"\nNiche: "+niche+"\nPlatform: "+plat+"\nVideo Length: "+length+"\nHook Type: "+hookType+"\n\n";
+    p+="Provide a detailed engagement prediction:\n1. **VIRAL POTENTIAL SCORE** - Rate 1-10 with explanation\n2. **ESTIMATED METRICS** (for a new account with <1000 followers):\n   - Estimated Views: Conservative / Realistic / Optimistic\n   - Estimated Likes: Conservative / Realistic / Optimistic\n   - Estimated Shares: Conservative / Realistic / Optimistic\n   - Estimated Comments: Conservative / Realistic / Optimistic\n3. **AUDIENCE EMOTION** - What feeling will this trigger? (curiosity, anger, inspiration, etc.)\n4. **RETENTION PREDICTION** - Where viewers might drop off\n5. **IMPROVEMENT SUGGESTIONS** - 5 specific tweaks to boost engagement\n6. **BEST POSTING TIME** - Recommended day/time for this content\n7. **COMPARABLE VIRAL VIDEOS** - 3 examples of similar content that went viral (describe what made them work)\n\nUse realistic numbers based on current platform algorithms.";
+  }
   return p;
 }
 
@@ -839,6 +908,8 @@ async function generate(tab){
                 tab==="compete"?"🔍 "+(curLang==="zh"?"分析竞品":"Analyze Competitors"):
                 tab==="thumb"?"🖼️ "+(curLang==="zh"?"生成缩略图":"Generate Thumbnails"):
                 tab==="revenue"?"📈 "+(curLang==="zh"?"计算收益":"Calculate Revenue"):
+                tab==="sound"?"🎵 "+(curLang==="zh"?"找热门音效":"Find Viral Sounds"):
+                tab==="engagement"?"🔮 "+(curLang==="zh"?"预测互动":"Predict Engagement"):
                 "🏷️ "+(curLang==="zh"?"优化SEO":"Optimize SEO");
     render();
   }
@@ -863,7 +934,7 @@ function showResult(tab,text){
     metaHtml+='<span class="engagement-badge '+cls+'">'+_("engScore")+": "+engScore+"/10</span>";
   }
   if(tab==="revenue"){
-    metaEl.style.display="none";
+    if(metaEl)metaEl.style.display="none";
     var revCards=document.getElementById("rev-cards");
     var lowMatch=text.match(/Conservative[:\s]*\$?([\d,]+)/i);
     var midMatch=text.match(/Realistic[:\s]*\$?([\d,]+)/i);
@@ -879,6 +950,22 @@ function showResult(tab,text){
     });
     if(lowV||midV||highV){
       revCards.innerHTML='<div class="rev-card"><div class="rev-num">$'+(lowV||"—")+'</div><div class="rev-label">Conservative</div></div><div class="rev-card"><div class="rev-num">$'+(midV||"—")+'</div><div class="rev-label">Realistic</div></div><div class="rev-card"><div class="rev-num">$'+(highV||"—")+'</div><div class="rev-label">Optimistic</div></div>';
+    }
+  }else if(tab==="engagement"){
+    if(metaEl)metaEl.style.display="none";
+    var engCards=document.getElementById("eng-cards");
+    if(engCards){
+      var eLines=text.split("\n");
+      var vR="",lR="",sR="",vScore="?";
+      eLines.forEach(function(ln){
+        var m;
+        if(/views/i.test(ln)){m=ln.match(/realistic[:\s]*([\d,.kKmM]+)/i);if(m)vR=m[1];}
+        if(/likes/i.test(ln)){m=ln.match(/realistic[:\s]*([\d,.kKmM]+)/i);if(m)lR=m[1];}
+        if(/shares/i.test(ln)){m=ln.match(/realistic[:\s]*([\d,.kKmM]+)/i);if(m)sR=m[1];}
+      });
+      var vs=text.match(/viral potential score[:\s]*(\d+)/i);
+      if(vs)vScore=vs[1];
+      engCards.innerHTML='<div class="rev-card"><div class="rev-num">'+(vR||"—")+'</div><div class="rev-label">Est. Views</div></div><div class="rev-card"><div class="rev-num">'+(lR||"—")+'</div><div class="rev-label">Est. Likes</div></div><div class="rev-card"><div class="rev-num">'+vScore+'/10</div><div class="rev-label">Viral Score</div></div>';
     }
   }else{metaEl.innerHTML=metaHtml;metaEl.style.display="flex";}
 
@@ -900,7 +987,7 @@ function saveHistory(tab,prompt,text){
   renderHistory(tab);
 }
 function loadHistories(){
-  ["script","hook","trend","calendar","compete","thumb","revenue","seo"].forEach(function(tab){
+  ["script","hook","trend","calendar","compete","thumb","revenue","seo","sound","engagement"].forEach(function(tab){
     try{var d=localStorage.getItem(HIST_KEY+tab);if(d)histories[tab]=JSON.parse(d);}catch(e){}
   });
 }
@@ -980,7 +1067,7 @@ function switchTab(tab){
 /* ===== Render ===== */
 function render(){
   // Usage info
-  ["script","hook","trend","calendar","compete","thumb","revenue","seo"].forEach(function(tab){
+  ["script","hook","trend","calendar","compete","thumb","revenue","seo","sound","engagement"].forEach(function(tab){
     var el=document.getElementById("usage-"+tab);
     if(!el)return;
     if(planLevel==="free"){
@@ -991,6 +1078,20 @@ function render(){
       el.innerHTML='<span class="plan-tag plan-'+planLevel+'">'+planLevel.toUpperCase()+'</span><span style="font-size:13px;color:var(--success);">'+(curLang==="zh"?"无限额度":"Unlimited")+'</span>';
     }
   });
+  // Update paid duration options based on plan
+  var sel=document.getElementById("s-duration");
+  if(sel){
+    var paidLevels={agency:["10-15min","15-30min","30-60min","1-2hr","2-4hr"],pro:["10-15min","15-30min"]};
+    var allowed=planLevel==="agency"?paidLevels.agency:planLevel==="pro"?paidLevels.pro:[];
+    Array.prototype.forEach.call(sel.options,function(opt){
+      if(opt.getAttribute("data-paid")==="1"){
+        var val=opt.value.replace(/-\d+.*$/,"").replace("hr","hr");
+        var locked=!allowed.some(function(a){return opt.value.indexOf(a)===0;});
+        opt.disabled=locked;
+        opt.style.color=locked?"#cbd5e1":"";
+      }
+    });
+  }
   // Render histories for current tab
   renderHistory(currentTab);
 }
@@ -1028,7 +1129,7 @@ function bindEvents(){
   });
 
   // Generate buttons
-  ["script","hook","trend","calendar","compete","thumb","revenue","seo"].forEach(function(tab){
+  ["script","hook","trend","calendar","compete","thumb","revenue","seo","sound","engagement"].forEach(function(tab){
     var btn=document.getElementById("gen-"+tab);
     if(btn)btn.onclick=function(){generate(tab);};
   });
@@ -1074,6 +1175,7 @@ function init(){
   try{var p=localStorage.getItem("ar_plan");if(p)planLevel=p;}catch(e){}
   loadHistories();
   bindEvents();
+  applyLang.call({lang:"zh"});
   showSection("home");
   switchTab("script");
   render();
