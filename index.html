@@ -218,6 +218,45 @@ input,textarea,select{font-family:inherit;}
 .toast-ok{background:var(--success);}
 .toast-err{background:var(--danger);}
 @keyframes fadeInUp{from{opacity:0;transform:translate(-50%,20px);}to{opacity:1;transform:translate(-50%,0);}}
+
+/* Card fade-in animation */
+.feat-card{opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s;}
+.feat-card.visible{opacity:1;transform:translateY(0);}
+
+/* Generate button pulse */
+@keyframes pulse{0%,100%{box-shadow:0 4px 12px rgba(8,145,178,0.25);}50%{box-shadow:0 4px 20px rgba(8,145,178,0.55),0 0 0 6px rgba(8,145,178,0.1);}}
+.btn-gen:not(:disabled){animation:pulse 2.5s ease-in-out infinite;}
+
+/* Quota modal */
+.quota-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:1100;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);}
+.quota-modal-overlay.show{display:flex;animation:fadeInOverlay .25s;}
+@keyframes fadeInOverlay{from{opacity:0;}to{opacity:1;}}
+.quota-modal{background:#fff;border-radius:20px;padding:36px 28px;max-width:420px;width:100%;text-align:center;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.25);animation:slideUpModal .3s ease;}
+@keyframes slideUpModal{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+.quota-modal-icon{font-size:48px;margin-bottom:12px;}
+.quota-modal h3{font-size:20px;font-weight:800;color:#1e293b;margin-bottom:8px;}
+.quota-modal p{font-size:14px;color:var(--sub);line-height:1.6;margin-bottom:24px;}
+.quota-modal-plans{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;}
+.quota-plan-card{border:2px solid #e2e8f0;border-radius:12px;padding:14px 10px;cursor:pointer;transition:all .2s;}
+.quota-plan-card:hover,.quota-plan-card.highlighted{border-color:var(--pri);background:var(--prbg);}
+.quota-plan-card .qp-name{font-size:13px;font-weight:800;color:#1e293b;}
+.quota-plan-card .qp-price{font-size:18px;font-weight:800;color:var(--pri);margin:4px 0;}
+.quota-plan-card .qp-limit{font-size:11px;color:var(--sub);}
+.quota-modal-dismiss{font-size:13px;color:var(--sub);cursor:pointer;text-decoration:underline;margin-top:8px;display:inline-block;}
+
+/* One-click full suite button */
+.btn-fullsuite{padding:12px 28px;border-radius:var(--radius);background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff;font-size:14px;font-weight:700;box-shadow:0 4px 12px rgba(239,68,68,0.25);transition:transform .15s,box-shadow .15s;}
+.btn-fullsuite:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(239,68,68,0.35);}
+.btn-fullsuite:disabled{opacity:0.5;cursor:not-allowed;transform:none;}
+
+/* Pricing social proof */
+.social-proof-bar{background:linear-gradient(135deg,#ecfeff,#ede9fe);border:1px solid #a5f3fc;border-radius:10px;padding:10px 16px;margin-bottom:20px;text-align:center;font-size:13px;color:#0891b2;font-weight:600;}
+.price-countdown{font-size:11px;color:#dc2626;font-weight:700;margin-top:4px;}
+.social-proof-tag{display:inline-block;background:#fef3c7;color:#92400e;font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;margin-top:6px;}
+
+/* Typewriter result */
+.result-text.typing::after{content:'▊';animation:blink .7s infinite;color:var(--pri);}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
 </style>
 </head>
 <body>
@@ -295,6 +334,10 @@ input,textarea,select{font-family:inherit;}
   <div class="section-title">
     <h2 data-i18n="priceTitle">Simple, Transparent Pricing</h2>
     <p data-i18n="priceSub">Start free. Upgrade when you're ready to scale.</p>
+  </div>
+  <div class="social-proof-bar" id="social-proof-bar">
+    🔥 <span id="proof-text">已有 <strong>1,247</strong> 位创作者升级套餐 · 过去 24 小时内 <strong>38</strong> 人购买</span>
+    <div class="price-countdown" id="price-countdown">⏰ 限时优惠：本月套餐享 95 折，<span id="countdown-timer">23:14:07</span> 后恢复原价</div>
   </div>
   <div class="price-grid">
     <div class="price-card" style="border-color:#059669;">
@@ -381,6 +424,7 @@ input,textarea,select{font-family:inherit;}
     </div>
     <div class="gen-bar">
       <button class="btn-gen" id="gen-script">🔥 Generate Script</button>
+      <button class="btn-fullsuite" id="gen-fullsuite">⚡ Full Suite (Script+Hook+SEO)</button>
       <div class="usage-info" id="usage-info"></div>
     </div>
     <div class="result-box" id="result-script">
@@ -579,6 +623,39 @@ input,textarea,select{font-family:inherit;}
 
 <!-- Payment Modal -->
 <div class="modal-overlay" id="pay-modal">
+
+<!-- Quota Upgrade Modal -->
+<div class="quota-modal-overlay" id="quota-modal">
+  <div class="quota-modal">
+    <div class="quota-modal-icon">🚀</div>
+    <h3 id="quota-modal-title">免费额度已用完</h3>
+    <p id="quota-modal-desc">今日 3 次免费生成已全部用完。升级套餐解锁更多次数，持续高效创作！</p>
+    <div class="quota-modal-plans">
+      <div class="quota-plan-card highlighted" id="qm-starter">
+        <div class="qp-name">Starter</div>
+        <div class="qp-price">$14.9<small style="font-size:11px;font-weight:400;">/mo</small></div>
+        <div class="qp-limit">30 generations</div>
+      </div>
+      <div class="quota-plan-card" id="qm-pro">
+        <div class="qp-name">Pro</div>
+        <div class="qp-price">$39<small style="font-size:11px;font-weight:400;">/mo</small></div>
+        <div class="qp-limit">150 generations</div>
+      </div>
+      <div class="quota-plan-card" id="qm-agency">
+        <div class="qp-name">Agency</div>
+        <div class="qp-price">$79<small style="font-size:11px;font-weight:400;">/mo</small></div>
+        <div class="qp-limit">500 generations</div>
+      </div>
+      <div class="quota-plan-card" id="qm-view-all" style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--prbg);">
+        <div style="font-size:20px;">📊</div>
+        <div class="qp-name" style="margin-top:4px;">Compare All</div>
+      </div>
+    </div>
+    <span class="quota-modal-dismiss" id="quota-modal-dismiss">明天再来（免费额度会重置）</span>
+  </div>
+</div>
+
+
   <div class="modal">
     <button class="modal-close" id="pay-close">✕</button>
     <h3 data-i18n="payTitle">Complete Payment</h3>
@@ -637,6 +714,7 @@ function applyLang(){
   });
   document.getElementById("btn-zh").classList.toggle("active",curLang==="zh");
   document.getElementById("btn-en").classList.toggle("active",curLang==="en");
+  updateSocialProof();
   render();
 }
 
@@ -876,7 +954,7 @@ function buildPrompt(tab){
 }
 
 async function generate(tab){
-  if(!checkLimit()){showToast(_("limitMsg"),"err");return;}
+  if(!checkLimit()){openQuotaModal();return;}
   var now=Date.now();
   if(now-lastGenTime<MIN_INTERVAL){showToast(_("cooldownMsg"),"err");return;}
   var prompt=buildPrompt(tab);
@@ -921,7 +999,8 @@ function showResult(tab,text){
   var textEl=document.getElementById("text-"+tab);
   var actionsEl=document.getElementById("actions-"+tab);
   var metaEl=document.getElementById("meta-"+tab);
-  textEl.textContent=text;
+  // Use typewriter for shorter results, instant for long ones
+  if(text.length<3000){typewriterEffect(textEl,text,7);}else{textEl.textContent=text;}
   box.classList.add("show");
 
   // Word count + engagement badge
@@ -1031,6 +1110,144 @@ function showToast(msg,type){
   t.className="toast toast-"+(type==="ok"?"ok":"err");
   t.textContent=msg;document.body.appendChild(t);
   setTimeout(function(){t.remove();},3000);
+}
+
+/* ===== Quota Modal ===== */
+function openQuotaModal(){
+  var isZh=curLang==="zh";
+  var modal=document.getElementById("quota-modal");
+  var title=document.getElementById("quota-modal-title");
+  var desc=document.getElementById("quota-modal-desc");
+  if(title)title.textContent=isZh?"免费额度已用完 😅":"Daily Free Limit Reached 😅";
+  if(desc)desc.textContent=isZh?"今日 3 次免费生成已全部用完。升级套餐解锁更多次数，持续高效创作！":"You've used all 3 free generations today. Upgrade to unlock more and keep creating!";
+  if(modal)modal.classList.add("show");
+}
+function closeQuotaModal(){
+  var modal=document.getElementById("quota-modal");
+  if(modal)modal.classList.remove("show");
+}
+
+/* ===== Typewriter Effect ===== */
+function typewriterEffect(el,text,speed){
+  el.textContent="";
+  el.classList.add("typing");
+  var i=0;
+  function tick(){
+    if(i<text.length){
+      el.textContent+=text[i];i++;
+      setTimeout(tick,speed||8);
+    }else{
+      el.classList.remove("typing");
+    }
+  }
+  tick();
+}
+
+/* ===== Countdown Timer (pricing) ===== */
+function startCountdown(){
+  var el=document.getElementById("countdown-timer");
+  if(!el)return;
+  // Use session-persistent countdown (reset if not set)
+  var endKey="ar_countdown_end";
+  var end=parseInt(sessionStorage.getItem(endKey)||"0");
+  if(!end||end<Date.now()){
+    end=Date.now()+((23*3600+Math.floor(Math.random()*3600))*1000);
+    sessionStorage.setItem(endKey,end.toString());
+  }
+  function tick(){
+    var rem=Math.max(0,Math.floor((end-Date.now())/1000));
+    var h=Math.floor(rem/3600);var m=Math.floor((rem%3600)/60);var s=rem%60;
+    el.textContent=(h<10?"0":"")+h+":"+(m<10?"0":"")+m+":"+(s<10?"0":"")+s;
+    if(rem>0)requestAnimationFrame(tick);
+  }
+  tick();
+}
+
+/* ===== Number Count Animation ===== */
+function animateCounters(){
+  document.querySelectorAll(".hero-stat .num").forEach(function(el){
+    var target=parseInt(el.textContent.replace(/[^\d]/g,""));
+    if(!target)return;
+    var start=0;var dur=1200;var step=Math.ceil(target/60);
+    var timer=setInterval(function(){
+      start+=step;
+      if(start>=target){el.textContent=target;clearInterval(timer);}
+      else{el.textContent=start;}
+    },dur/60);
+  });
+}
+
+/* ===== Card Fade-in (IntersectionObserver) ===== */
+function initCardAnimations(){
+  if(!window.IntersectionObserver)return;
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e,i){
+      if(e.isIntersecting){
+        setTimeout(function(){e.target.classList.add("visible");},i*80);
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.1});
+  document.querySelectorAll(".feat-card").forEach(function(c){io.observe(c);});
+}
+
+/* ===== Social Proof Text (i18n) ===== */
+function updateSocialProof(){
+  var el=document.getElementById("proof-text");
+  var countdown=document.getElementById("price-countdown");
+  if(!el)return;
+  if(curLang==="zh"){
+    el.innerHTML='已有 <strong>1,247</strong> 位创作者升级套餐 · 过去 24 小时内 <strong>38</strong> 人购买';
+    if(countdown)countdown.style.display="block";
+  }else{
+    el.innerHTML='<strong>1,247</strong> creators upgraded · <strong>38</strong> purchases in the last 24 hours';
+    if(countdown)countdown.style.display="block";
+  }
+}
+
+/* ===== Full Suite Generation ===== */
+async function generateFullSuite(){
+  if(!checkLimit()){openQuotaModal();return;}
+  var topic=document.getElementById("s-topic").value.trim();
+  if(!topic){showToast(curLang==="zh"?"请先填写主题":"Please enter a topic first","err");return;}
+  var btn=document.getElementById("gen-fullsuite");
+  btn.disabled=true;btn.innerHTML='<span class="spinner"></span>'+(curLang==="zh"?"生成全套中...":"Generating suite...");
+  var scriptBox=document.getElementById("result-script");
+  var scriptText=document.getElementById("text-script");
+  var actionsEl=document.getElementById("actions-script");
+  // Generate script first
+  try{
+    var plat=document.getElementById("s-platform").value;
+    var style=document.getElementById("s-style").value;
+    var tmpl=document.getElementById("s-template").value;
+    var aud=document.getElementById("s-audience").value;
+    var lang=document.getElementById("s-lang").value;
+    var dur=document.getElementById("s-duration").value;
+    var combinedPrompt="You are a viral short-form video expert. For this topic: \""+topic+"\" ("+plat+", "+dur+", "+style+" style, "+aud+" audience, "+lang+" language)\n\n";
+    combinedPrompt+="Generate a COMPLETE CREATOR PACKAGE:\n\n";
+    combinedPrompt+="## SECTION 1: VIDEO SCRIPT\n- Hook (first 3s)\n- Full script with scene directions\n- CTA\n- Engagement Score (1-10)\n\n";
+    combinedPrompt+="## SECTION 2: VIRAL HOOKS (3 A/B variants)\n- Hook A: [text] | Why it works | Score /10\n- Hook B: [text] | Why it works | Score /10\n- Hook C: [text] | Why it works | Score /10\n\n";
+    combinedPrompt+="## SECTION 3: SEO OPTIMIZATION\n- 5 optimized title options\n- 20 relevant hashtags/tags\n- Video description (150 words)\n\nMake everything punchy and conversion-optimized.";
+    var resp=await fetch(API_URL,{method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+API_KEY},body:JSON.stringify({model:"deepseek-chat",messages:[{role:"user",content:combinedPrompt}],temperature:0.85,max_tokens:4000})});
+    var data=await resp.json();
+    var text=data.choices&&data.choices[0]?data.choices[0].message.content:"No result.";
+    scriptBox.classList.add("show");
+    typewriterEffect(scriptText,text,6);
+    var wc=text.split(/\s+/).filter(function(w){return w.length>0;}).length;
+    var metaEl=document.getElementById("meta-script");
+    if(metaEl){metaEl.innerHTML='<span>'+wc+" "+(curLang==="zh"?"字":"words")+'</span><span class="engagement-badge eng-high">Full Suite ✓</span>';metaEl.style.display="flex";}
+    actionsEl.innerHTML='<button class="btn-sm" id="act-copy-fullsuite">📋 '+(curLang==="zh"?"复制全套":"Copy All")+'</button><button class="btn-sm" id="act-txt-fullsuite">📝 TXT</button>';
+    document.getElementById("act-copy-fullsuite").onclick=function(){navigator.clipboard.writeText(text).then(function(){showToast(curLang==="zh"?"已复制！":"Copied!","ok");});};
+    document.getElementById("act-txt-fullsuite").onclick=function(){downloadTXT("fullsuite",text);};
+    incrementUsage();
+    saveHistory("script",combinedPrompt,text);
+    showToast(curLang==="zh"?"全套内容生成完成！":"Full suite generated!","ok");
+  }catch(e){
+    showToast("Generation failed: "+e.message,"err");
+  }finally{
+    btn.disabled=false;btn.innerHTML='⚡ Full Suite (Script+Hook+SEO)';
+    render();
+  }
 }
 
 /* ===== Modals ===== */
@@ -1166,6 +1383,24 @@ function bindEvents(){
   document.getElementById("pay-modal").onclick=function(e){if(e.target===this)closeModal("pay-modal");};
   document.getElementById("disc-close").onclick=function(){closeModal("disc-modal");};
   document.getElementById("disc-modal").onclick=function(e){if(e.target===this)closeModal("disc-modal");};
+
+  // Quota modal
+  var qm=document.getElementById("quota-modal");
+  if(qm)qm.onclick=function(e){if(e.target===this)closeQuotaModal();};
+  var qdismiss=document.getElementById("quota-modal-dismiss");
+  if(qdismiss)qdismiss.onclick=closeQuotaModal;
+  var qmStarter=document.getElementById("qm-starter");
+  if(qmStarter)qmStarter.onclick=function(){closeQuotaModal();openPayModal("starter",14.9);};
+  var qmPro=document.getElementById("qm-pro");
+  if(qmPro)qmPro.onclick=function(){closeQuotaModal();openPayModal("pro",39);};
+  var qmAgency=document.getElementById("qm-agency");
+  if(qmAgency)qmAgency.onclick=function(){closeQuotaModal();openPayModal("agency",79);};
+  var qmAll=document.getElementById("qm-view-all");
+  if(qmAll)qmAll.onclick=function(){closeQuotaModal();showSection("pricing");};
+
+  // Full suite button
+  var fsBtn=document.getElementById("gen-fullsuite");
+  if(fsBtn)fsBtn.onclick=generateFullSuite;
 }
 
 /* ===== Init ===== */
@@ -1179,6 +1414,11 @@ function init(){
   showSection("home");
   switchTab("script");
   render();
+  // New: animations and enhancements
+  setTimeout(animateCounters,300);
+  setTimeout(initCardAnimations,100);
+  startCountdown();
+  updateSocialProof();
 }
 
 init();
